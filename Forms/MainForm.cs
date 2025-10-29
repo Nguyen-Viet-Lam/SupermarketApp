@@ -6,7 +6,6 @@ using System.Windows.Forms;
 using Sunny.UI;
 using SupermarketApp.Utils;
 using SupermarketApp.Data;
-using Microsoft.EntityFrameworkCore;
 
 namespace SupermarketApp.Forms
 {
@@ -87,9 +86,9 @@ namespace SupermarketApp.Forms
             this.lblUser.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lblUser.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblUser.ForeColor = System.Drawing.Color.Black;
-            this.lblUser.Location = new System.Drawing.Point(988, 23);
+            this.lblUser.Location = new System.Drawing.Point(1005, 20);
             this.lblUser.Name = "lblUser";
-            this.lblUser.Size = new System.Drawing.Size(177, 30);
+            this.lblUser.Size = new System.Drawing.Size(175, 30);
             this.lblUser.TabIndex = 1;
             this.lblUser.Text = "👤 Xin chào, User";
             this.lblUser.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -142,7 +141,7 @@ namespace SupermarketApp.Forms
             this.btnLogout.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(99)))), ((int)(((byte)(235)))));
             this.btnLogout.FillHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(78)))), ((int)(((byte)(216)))));
             this.btnLogout.FillPressColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(58)))), ((int)(((byte)(138)))));
-            this.btnLogout.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
+            this.btnLogout.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Bold);
             this.btnLogout.Location = new System.Drawing.Point(15, 594);
             this.btnLogout.MinimumSize = new System.Drawing.Size(1, 1);
             this.btnLogout.Name = "btnLogout";
@@ -161,7 +160,7 @@ namespace SupermarketApp.Forms
             this.btnSettings.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(41)))), ((int)(((byte)(55)))));
             this.btnSettings.FillHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(130)))), ((int)(((byte)(246)))));
             this.btnSettings.FillPressColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(78)))), ((int)(((byte)(216)))));
-            this.btnSettings.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
+            this.btnSettings.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F);
             this.btnSettings.Location = new System.Drawing.Point(15, 534);
             this.btnSettings.MinimumSize = new System.Drawing.Size(1, 1);
             this.btnSettings.Name = "btnSettings";
@@ -179,7 +178,7 @@ namespace SupermarketApp.Forms
             this.btnSuppliers.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(41)))), ((int)(((byte)(55)))));
             this.btnSuppliers.FillHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(130)))), ((int)(((byte)(246)))));
             this.btnSuppliers.FillPressColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(78)))), ((int)(((byte)(216)))));
-            this.btnSuppliers.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
+            this.btnSuppliers.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F);
             this.btnSuppliers.Location = new System.Drawing.Point(15, 494);
             this.btnSuppliers.MinimumSize = new System.Drawing.Size(1, 1);
             this.btnSuppliers.Name = "btnSuppliers";
@@ -197,7 +196,7 @@ namespace SupermarketApp.Forms
             this.btnEmployees.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(41)))), ((int)(((byte)(55)))));
             this.btnEmployees.FillHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(130)))), ((int)(((byte)(246)))));
             this.btnEmployees.FillPressColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(78)))), ((int)(((byte)(216)))));
-            this.btnEmployees.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
+            this.btnEmployees.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F);
             this.btnEmployees.Location = new System.Drawing.Point(15, 438);
             this.btnEmployees.MinimumSize = new System.Drawing.Size(1, 1);
             this.btnEmployees.Name = "btnEmployees";
@@ -215,7 +214,7 @@ namespace SupermarketApp.Forms
             this.btnReports.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(41)))), ((int)(((byte)(55)))));
             this.btnReports.FillHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(130)))), ((int)(((byte)(246)))));
             this.btnReports.FillPressColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(78)))), ((int)(((byte)(216)))));
-            this.btnReports.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
+            this.btnReports.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F);
             this.btnReports.Location = new System.Drawing.Point(15, 382);
             this.btnReports.MinimumSize = new System.Drawing.Size(1, 1);
             this.btnReports.Name = "btnReports";
@@ -233,7 +232,7 @@ namespace SupermarketApp.Forms
             this.btnPurchaseOrders.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(41)))), ((int)(((byte)(55)))));
             this.btnPurchaseOrders.FillHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(130)))), ((int)(((byte)(246)))));
             this.btnPurchaseOrders.FillPressColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(78)))), ((int)(((byte)(216)))));
-            this.btnPurchaseOrders.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
+            this.btnPurchaseOrders.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F);
             this.btnPurchaseOrders.Location = new System.Drawing.Point(15, 276);
             this.btnPurchaseOrders.MinimumSize = new System.Drawing.Size(1, 1);
             this.btnPurchaseOrders.Name = "btnPurchaseOrders";
@@ -251,7 +250,7 @@ namespace SupermarketApp.Forms
             this.btnInvoiceHistory.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(41)))), ((int)(((byte)(55)))));
             this.btnInvoiceHistory.FillHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(130)))), ((int)(((byte)(246)))));
             this.btnInvoiceHistory.FillPressColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(78)))), ((int)(((byte)(216)))));
-            this.btnInvoiceHistory.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
+            this.btnInvoiceHistory.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F);
             this.btnInvoiceHistory.Location = new System.Drawing.Point(15, 326);
             this.btnInvoiceHistory.MinimumSize = new System.Drawing.Size(1, 1);
             this.btnInvoiceHistory.Name = "btnInvoiceHistory";
@@ -269,7 +268,7 @@ namespace SupermarketApp.Forms
             this.btnInvoices.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(41)))), ((int)(((byte)(55)))));
             this.btnInvoices.FillHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(130)))), ((int)(((byte)(246)))));
             this.btnInvoices.FillPressColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(78)))), ((int)(((byte)(216)))));
-            this.btnInvoices.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
+            this.btnInvoices.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F);
             this.btnInvoices.Location = new System.Drawing.Point(15, 220);
             this.btnInvoices.MinimumSize = new System.Drawing.Size(1, 1);
             this.btnInvoices.Name = "btnInvoices";
@@ -287,7 +286,7 @@ namespace SupermarketApp.Forms
             this.btnCustomers.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(41)))), ((int)(((byte)(55)))));
             this.btnCustomers.FillHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(130)))), ((int)(((byte)(246)))));
             this.btnCustomers.FillPressColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(78)))), ((int)(((byte)(216)))));
-            this.btnCustomers.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
+            this.btnCustomers.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F);
             this.btnCustomers.Location = new System.Drawing.Point(15, 120);
             this.btnCustomers.MinimumSize = new System.Drawing.Size(1, 1);
             this.btnCustomers.Name = "btnCustomers";
@@ -305,7 +304,7 @@ namespace SupermarketApp.Forms
             this.btnInventory.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(41)))), ((int)(((byte)(55)))));
             this.btnInventory.FillHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(130)))), ((int)(((byte)(246)))));
             this.btnInventory.FillPressColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(78)))), ((int)(((byte)(216)))));
-            this.btnInventory.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
+            this.btnInventory.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F);
             this.btnInventory.Location = new System.Drawing.Point(15, 176);
             this.btnInventory.MinimumSize = new System.Drawing.Size(1, 1);
             this.btnInventory.Name = "btnInventory";
@@ -323,7 +322,7 @@ namespace SupermarketApp.Forms
             this.btnProducts.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(41)))), ((int)(((byte)(55)))));
             this.btnProducts.FillHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(130)))), ((int)(((byte)(246)))));
             this.btnProducts.FillPressColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(78)))), ((int)(((byte)(216)))));
-            this.btnProducts.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnProducts.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnProducts.Location = new System.Drawing.Point(15, 64);
             this.btnProducts.MinimumSize = new System.Drawing.Size(1, 1);
             this.btnProducts.Name = "btnProducts";
@@ -341,7 +340,7 @@ namespace SupermarketApp.Forms
             this.btnDashboard.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(41)))), ((int)(((byte)(55)))));
             this.btnDashboard.FillHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(130)))), ((int)(((byte)(246)))));
             this.btnDashboard.FillPressColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(78)))), ((int)(((byte)(216)))));
-            this.btnDashboard.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDashboard.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDashboard.Location = new System.Drawing.Point(15, 8);
             this.btnDashboard.MinimumSize = new System.Drawing.Size(1, 1);
             this.btnDashboard.Name = "btnDashboard";
@@ -479,7 +478,7 @@ namespace SupermarketApp.Forms
 
             var lblWelcome = new UILabel
             {
-                Font = new Font("Microsoft Sans Serif", 18F, FontStyle.Bold),
+                Font = new Font("Microsoft Sans Serif", 22F, FontStyle.Bold),
                 ForeColor = Color.FromArgb(59, 130, 246),
                 Location = new Point(20, 15),
                 Size = new Size(860, 50),
@@ -492,7 +491,7 @@ namespace SupermarketApp.Forms
             // Stats Cards Section
             var lblStats = new UILabel
             {
-                Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold),
+                Font = new Font("Microsoft Sans Serif", 16F, FontStyle.Bold),
                 ForeColor = Color.FromArgb(31, 41, 55),
                 Location = new Point(20, 120),
                 Size = new Size(300, 30),
@@ -505,23 +504,23 @@ namespace SupermarketApp.Forms
             {
                 using (var db = new SupermarketContext())
                 {
-                    var totalProducts = await db.SanPham.CountAsync();
-                    var totalCustomers = await db.KhachHang.CountAsync();
-                    var totalInvoices = await db.HoaDon.CountAsync();
-                    var totalRevenue = await db.HoaDon.SumAsync(x => (decimal?)x.TongTien) ?? 0;
+                    var totalProducts = await Task.Run(() => db.SanPham.Count());
+                    var totalCustomers = await Task.Run(() => db.KhachHang.Count());
+                    var totalInvoices = await Task.Run(() => db.HoaDon.Count());
+                    var totalRevenue = await Task.Run(() => db.HoaDon.Sum(x => (decimal?)x.TongTien) ?? 0);
                     
                     var today = DateTime.Today.ToUniversalTime();
                     var tomorrow = today.AddDays(1);
-                    var todayInvoices = await db.HoaDon
+                    var todayInvoices = await Task.Run(() => db.HoaDon
                         .Where(x => x.NgayLap >= today && x.NgayLap < tomorrow)
-                        .CountAsync();
-                    var todayRevenue = await db.HoaDon
+                        .Count());
+                    var todayRevenue = await Task.Run(() => db.HoaDon
                         .Where(x => x.NgayLap >= today && x.NgayLap < tomorrow)
-                        .SumAsync(x => (decimal?)x.TongTien) ?? 0;
+                        .Sum(x => (decimal?)x.TongTien) ?? 0);
                     
-                    var lowStockProducts = await db.SanPham
+                    var lowStockProducts = await Task.Run(() => db.SanPham
                         .Where(x => x.SoLuong < 10)
-                        .CountAsync();
+                        .Count());
 
                     // Row 1: General Stats
                     CreateStatCard(dashPanel, "📦 Tổng sản phẩm", totalProducts.ToString(), 
@@ -536,7 +535,7 @@ namespace SupermarketApp.Forms
                     // Row 2: Today Stats
                     var lblToday = new UILabel
                     {
-                        Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold),
+                        Font = new Font("Microsoft Sans Serif", 16F, FontStyle.Bold),
                         ForeColor = Color.FromArgb(31, 41, 55),
                         Location = new Point(20, 315),
                         Size = new Size(300, 30),
@@ -595,7 +594,7 @@ namespace SupermarketApp.Forms
             var btnQuickSell = new UIButton
             {
                 Text = "🛒 Bán hàng",
-                Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold),
+                Font = new Font("Microsoft Sans Serif", 11F, FontStyle.Bold),
                 Location = new Point(20, 50),
                 Size = new Size(140, 38),
                 Radius = 5,
@@ -610,7 +609,7 @@ namespace SupermarketApp.Forms
             var btnQuickProduct = new UIButton
             {
                 Text = "📦 Sản phẩm",
-                Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold),
+                Font = new Font("Microsoft Sans Serif", 11F),
                 Location = new Point(175, 50),
                 Size = new Size(140, 38),
                 Radius = 5,
@@ -625,7 +624,7 @@ namespace SupermarketApp.Forms
             var btnQuickCustomer = new UIButton
             {
                 Text = "👥 Khách hàng",
-                Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold),
+                Font = new Font("Microsoft Sans Serif", 11F),
                 Location = new Point(330, 50),
                 Size = new Size(140, 38),
                 Radius = 5,
@@ -640,7 +639,7 @@ namespace SupermarketApp.Forms
             var btnQuickReport = new UIButton
             {
                 Text = "📊 Báo cáo",
-                Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold),
+                Font = new Font("Microsoft Sans Serif", 11F),
                 Location = new Point(485, 50),
                 Size = new Size(140, 38),
                 Radius = 5,
@@ -670,7 +669,7 @@ namespace SupermarketApp.Forms
 
             var lblTitle = new UILabel
             {
-                Font = new Font("Microsoft Sans Serif", 12F),
+                Font = new Font("Microsoft Sans Serif", 11F),
                 ForeColor = Color.FromArgb(107, 114, 128),
                 Location = new Point(15, 15),
                 Size = new Size(200, 25),

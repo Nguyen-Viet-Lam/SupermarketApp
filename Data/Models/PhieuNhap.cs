@@ -10,7 +10,7 @@ namespace SupermarketApp.Data.Models
         public int MaNCC { get; set; }
         public int MaNV { get; set; }
         public decimal TongTien { get; set; }
-        public string GhiChu { get; set; }
+        
         public string TrangThai { get; set; } // "Chờ duyệt", "Đã duyệt", "Đã hủy"
 
         // Navigation Properties

@@ -56,10 +56,6 @@ namespace SupermarketApp.Forms
         private UIButton btnRestore;
         private UIButton btnBrowseRestore;
 
-        // UI Language Settings
-        private UILabel lblLanguage;
-        private UIComboBox cboLanguage;
-
         public SettingsForm(string username = "admin")
         {
             _currentUsername = username;
@@ -89,16 +85,6 @@ namespace SupermarketApp.Forms
                 // Load backup path
                 var backupPath = await _settingsService.GetSettingAsync("BackupPath");
                 txtBackupPath.Text = backupPath ?? Path.Combine(Application.StartupPath, "Backups");
-
-                // Load UI language
-                var uiLang = await _settingsService.GetSettingAsync("UILanguage");
-                if (cboLanguage != null)
-                {
-                    if (string.IsNullOrWhiteSpace(uiLang) || uiLang.StartsWith("vi", StringComparison.OrdinalIgnoreCase))
-                        cboLanguage.SelectedIndex = 0;
-                    else
-                        cboLanguage.SelectedIndex = 1;
-                }
             }
             catch (Exception ex)
             {
@@ -121,12 +107,8 @@ namespace SupermarketApp.Forms
                 await _settingsService.SaveSettingAsync("StoreName", txtStoreName.Text, _currentUsername);
                 await _settingsService.SaveSettingAsync("StoreAddress", txtStoreAddress.Text, _currentUsername);
                 await _settingsService.SaveSettingAsync("StorePhone", txtStorePhone.Text, _currentUsername);
-
-                // Save UI language
-                var selectedCulture = (cboLanguage != null && cboLanguage.SelectedIndex == 1) ? "en-US" : "vi-VN";
-                await _settingsService.SaveSettingAsync("UILanguage", selectedCulture, _currentUsername);
                 
-                MessageHelper.ShowSuccess("Đã lưu cài đặt chung thành công!\nKhởi động lại ứng dụng để áp dụng ngôn ngữ.");
+                MessageHelper.ShowSuccess("Đã lưu cài đặt chung thành công!");
             }
             catch (Exception ex)
             {
@@ -401,8 +383,6 @@ namespace SupermarketApp.Forms
             this.txtStoreAddress = new Sunny.UI.UITextBox();
             this.lblStorePhone = new Sunny.UI.UILabel();
             this.txtStorePhone = new Sunny.UI.UITextBox();
-            this.lblLanguage = new Sunny.UI.UILabel();
-            this.cboLanguage = new Sunny.UI.UIComboBox();
             this.btnSaveGeneral = new Sunny.UI.UIButton();
             this.tabDatabase = new System.Windows.Forms.TabPage();
             this.lblConnectionString = new Sunny.UI.UILabel();
@@ -438,7 +418,7 @@ namespace SupermarketApp.Forms
             this.pnlTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlTop.FillColor = System.Drawing.Color.White;
             this.pnlTop.FillColor2 = System.Drawing.Color.White;
-            this.pnlTop.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.pnlTop.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.pnlTop.Location = new System.Drawing.Point(0, 0);
             this.pnlTop.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.pnlTop.MinimumSize = new System.Drawing.Size(1, 1);
@@ -456,7 +436,7 @@ namespace SupermarketApp.Forms
             this.lblTitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(130)))), ((int)(((byte)(246)))));
             this.lblTitle.Location = new System.Drawing.Point(3, 20);
             this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(330, 40);
+            this.lblTitle.Size = new System.Drawing.Size(400, 40);
             this.lblTitle.TabIndex = 0;
             this.lblTitle.Text = "⚙️ CÀI ĐẶT HỆ THỐNG";
             this.lblTitle.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -469,12 +449,11 @@ namespace SupermarketApp.Forms
             this.tabControl.Controls.Add(this.tabBackup);
             this.tabControl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControl.DrawMode = System.Windows.Forms.TabDrawMode.OwnerDrawFixed;
-            this.tabControl.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.tabControl.ItemSize = new System.Drawing.Size(180, 40);
+            this.tabControl.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.tabControl.ItemSize = new System.Drawing.Size(120, 40);
             this.tabControl.Location = new System.Drawing.Point(0, 80);
             this.tabControl.MainPage = "";
             this.tabControl.Name = "tabControl";
-            this.tabControl.RightToLeftLayout = true;
             this.tabControl.SelectedIndex = 0;
             this.tabControl.Size = new System.Drawing.Size(770, 353);
             this.tabControl.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
@@ -490,18 +469,16 @@ namespace SupermarketApp.Forms
             this.tabGeneral.Controls.Add(this.txtStoreAddress);
             this.tabGeneral.Controls.Add(this.lblStorePhone);
             this.tabGeneral.Controls.Add(this.txtStorePhone);
-            this.tabGeneral.Controls.Add(this.lblLanguage);
-            this.tabGeneral.Controls.Add(this.cboLanguage);
             this.tabGeneral.Controls.Add(this.btnSaveGeneral);
             this.tabGeneral.Location = new System.Drawing.Point(0, 40);
             this.tabGeneral.Name = "tabGeneral";
-            this.tabGeneral.Size = new System.Drawing.Size(770, 313);
+            this.tabGeneral.Size = new System.Drawing.Size(669, 313);
             this.tabGeneral.TabIndex = 0;
             this.tabGeneral.Text = "Cài đặt chung";
             // 
             // lblStoreName
             // 
-            this.lblStoreName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.lblStoreName.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.lblStoreName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
             this.lblStoreName.Location = new System.Drawing.Point(30, 30);
             this.lblStoreName.Name = "lblStoreName";
@@ -513,7 +490,7 @@ namespace SupermarketApp.Forms
             // txtStoreName
             // 
             this.txtStoreName.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtStoreName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.txtStoreName.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.txtStoreName.Location = new System.Drawing.Point(200, 30);
             this.txtStoreName.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtStoreName.MinimumSize = new System.Drawing.Size(1, 16);
@@ -527,7 +504,7 @@ namespace SupermarketApp.Forms
             // 
             // lblStoreAddress
             // 
-            this.lblStoreAddress.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.lblStoreAddress.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.lblStoreAddress.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
             this.lblStoreAddress.Location = new System.Drawing.Point(30, 80);
             this.lblStoreAddress.Name = "lblStoreAddress";
@@ -539,7 +516,7 @@ namespace SupermarketApp.Forms
             // txtStoreAddress
             // 
             this.txtStoreAddress.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtStoreAddress.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.txtStoreAddress.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.txtStoreAddress.Location = new System.Drawing.Point(200, 80);
             this.txtStoreAddress.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtStoreAddress.MinimumSize = new System.Drawing.Size(1, 16);
@@ -553,7 +530,7 @@ namespace SupermarketApp.Forms
             // 
             // lblStorePhone
             // 
-            this.lblStorePhone.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.lblStorePhone.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.lblStorePhone.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
             this.lblStorePhone.Location = new System.Drawing.Point(30, 130);
             this.lblStorePhone.Name = "lblStorePhone";
@@ -565,7 +542,7 @@ namespace SupermarketApp.Forms
             // txtStorePhone
             // 
             this.txtStorePhone.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtStorePhone.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.txtStorePhone.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.txtStorePhone.Location = new System.Drawing.Point(200, 130);
             this.txtStorePhone.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtStorePhone.MinimumSize = new System.Drawing.Size(1, 16);
@@ -577,40 +554,6 @@ namespace SupermarketApp.Forms
             this.txtStorePhone.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
             this.txtStorePhone.Watermark = "";
             // 
-            // lblLanguage
-            // 
-            this.lblLanguage.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.lblLanguage.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
-            this.lblLanguage.Location = new System.Drawing.Point(30, 180);
-            this.lblLanguage.Name = "lblLanguage";
-            this.lblLanguage.Size = new System.Drawing.Size(150, 30);
-            this.lblLanguage.TabIndex = 6;
-            this.lblLanguage.Text = "Ngôn ngữ UI:";
-            this.lblLanguage.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // cboLanguage
-            // 
-            this.cboLanguage.DataSource = null;
-            this.cboLanguage.DropDownStyle = Sunny.UI.UIDropDownStyle.DropDownList;
-            this.cboLanguage.FillColor = System.Drawing.Color.White;
-            this.cboLanguage.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.cboLanguage.ItemHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(155)))), ((int)(((byte)(200)))), ((int)(((byte)(255)))));
-            this.cboLanguage.Items.AddRange(new object[] {
-            "Tiếng Việt (vi-VN)",
-            "English (en-US)"});
-            this.cboLanguage.ItemSelectForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(243)))), ((int)(((byte)(255)))));
-            this.cboLanguage.Location = new System.Drawing.Point(200, 180);
-            this.cboLanguage.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.cboLanguage.MinimumSize = new System.Drawing.Size(63, 0);
-            this.cboLanguage.Name = "cboLanguage";
-            this.cboLanguage.Padding = new System.Windows.Forms.Padding(0, 0, 30, 2);
-            this.cboLanguage.Size = new System.Drawing.Size(200, 35);
-            this.cboLanguage.SymbolSize = 24;
-            this.cboLanguage.TabIndex = 7;
-            this.cboLanguage.Text = "Tiếng Việt (vi-VN)";
-            this.cboLanguage.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
-            this.cboLanguage.Watermark = "";
-            // 
             // btnSaveGeneral
             // 
             this.btnSaveGeneral.Cursor = System.Windows.Forms.Cursors.Hand;
@@ -618,7 +561,7 @@ namespace SupermarketApp.Forms
             this.btnSaveGeneral.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(99)))), ((int)(((byte)(235)))));
             this.btnSaveGeneral.FillHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(99)))), ((int)(((byte)(235)))));
             this.btnSaveGeneral.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
-            this.btnSaveGeneral.Location = new System.Drawing.Point(200, 240);
+            this.btnSaveGeneral.Location = new System.Drawing.Point(200, 200);
             this.btnSaveGeneral.MinimumSize = new System.Drawing.Size(1, 1);
             this.btnSaveGeneral.Name = "btnSaveGeneral";
             this.btnSaveGeneral.Size = new System.Drawing.Size(150, 40);
@@ -636,13 +579,13 @@ namespace SupermarketApp.Forms
             this.tabDatabase.Controls.Add(this.btnSaveDatabase);
             this.tabDatabase.Location = new System.Drawing.Point(0, 40);
             this.tabDatabase.Name = "tabDatabase";
-            this.tabDatabase.Size = new System.Drawing.Size(770, 313);
+            this.tabDatabase.Size = new System.Drawing.Size(669, 313);
             this.tabDatabase.TabIndex = 1;
             this.tabDatabase.Text = "Database";
             // 
             // lblConnectionString
             // 
-            this.lblConnectionString.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.lblConnectionString.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.lblConnectionString.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
             this.lblConnectionString.Location = new System.Drawing.Point(30, 30);
             this.lblConnectionString.Name = "lblConnectionString";
@@ -711,13 +654,13 @@ namespace SupermarketApp.Forms
             this.tabSecurity.Controls.Add(this.btnChangePassword);
             this.tabSecurity.Location = new System.Drawing.Point(0, 40);
             this.tabSecurity.Name = "tabSecurity";
-            this.tabSecurity.Size = new System.Drawing.Size(770, 313);
+            this.tabSecurity.Size = new System.Drawing.Size(669, 313);
             this.tabSecurity.TabIndex = 2;
             this.tabSecurity.Text = "Bảo mật";
             // 
             // lblCurrentPassword
             // 
-            this.lblCurrentPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.lblCurrentPassword.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.lblCurrentPassword.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
             this.lblCurrentPassword.Location = new System.Drawing.Point(30, 30);
             this.lblCurrentPassword.Name = "lblCurrentPassword";
@@ -729,7 +672,7 @@ namespace SupermarketApp.Forms
             // txtCurrentPassword
             // 
             this.txtCurrentPassword.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtCurrentPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.txtCurrentPassword.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.txtCurrentPassword.Location = new System.Drawing.Point(200, 30);
             this.txtCurrentPassword.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtCurrentPassword.MinimumSize = new System.Drawing.Size(1, 16);
@@ -744,7 +687,7 @@ namespace SupermarketApp.Forms
             // 
             // lblNewPassword
             // 
-            this.lblNewPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.lblNewPassword.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.lblNewPassword.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
             this.lblNewPassword.Location = new System.Drawing.Point(30, 80);
             this.lblNewPassword.Name = "lblNewPassword";
@@ -756,7 +699,7 @@ namespace SupermarketApp.Forms
             // txtNewPassword
             // 
             this.txtNewPassword.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtNewPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.txtNewPassword.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.txtNewPassword.Location = new System.Drawing.Point(200, 80);
             this.txtNewPassword.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtNewPassword.MinimumSize = new System.Drawing.Size(1, 16);
@@ -771,7 +714,7 @@ namespace SupermarketApp.Forms
             // 
             // lblConfirmPassword
             // 
-            this.lblConfirmPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.lblConfirmPassword.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.lblConfirmPassword.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
             this.lblConfirmPassword.Location = new System.Drawing.Point(30, 130);
             this.lblConfirmPassword.Name = "lblConfirmPassword";
@@ -783,7 +726,7 @@ namespace SupermarketApp.Forms
             // txtConfirmPassword
             // 
             this.txtConfirmPassword.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtConfirmPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.txtConfirmPassword.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.txtConfirmPassword.Location = new System.Drawing.Point(200, 130);
             this.txtConfirmPassword.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtConfirmPassword.MinimumSize = new System.Drawing.Size(1, 16);
@@ -829,7 +772,7 @@ namespace SupermarketApp.Forms
             // 
             // lblBackupPath
             // 
-            this.lblBackupPath.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.lblBackupPath.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.lblBackupPath.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
             this.lblBackupPath.Location = new System.Drawing.Point(30, 30);
             this.lblBackupPath.Name = "lblBackupPath";
@@ -841,7 +784,7 @@ namespace SupermarketApp.Forms
             // txtBackupPath
             // 
             this.txtBackupPath.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtBackupPath.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.txtBackupPath.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.txtBackupPath.Location = new System.Drawing.Point(200, 30);
             this.txtBackupPath.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtBackupPath.MinimumSize = new System.Drawing.Size(1, 16);

@@ -62,7 +62,7 @@ namespace SupermarketApp.Forms
             this.pnlCenter.Controls.Add(this.lblTitle);
             this.pnlCenter.FillColor = System.Drawing.Color.White;
             this.pnlCenter.FillColor2 = System.Drawing.Color.White;
-            this.pnlCenter.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.pnlCenter.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.pnlCenter.Location = new System.Drawing.Point(150, 60);
             this.pnlCenter.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.pnlCenter.MinimumSize = new System.Drawing.Size(1, 1);
@@ -101,7 +101,7 @@ namespace SupermarketApp.Forms
             // txtFullName
             // 
             this.txtFullName.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtFullName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.txtFullName.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.txtFullName.Location = new System.Drawing.Point(35, 130);
             this.txtFullName.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtFullName.MinimumSize = new System.Drawing.Size(1, 16);
@@ -128,7 +128,7 @@ namespace SupermarketApp.Forms
             // txtUsername
             // 
             this.txtUsername.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtUsername.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.txtUsername.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.txtUsername.Location = new System.Drawing.Point(35, 210);
             this.txtUsername.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtUsername.MinimumSize = new System.Drawing.Size(1, 16);
@@ -155,7 +155,7 @@ namespace SupermarketApp.Forms
             // txtPassword
             // 
             this.txtPassword.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.txtPassword.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.txtPassword.Location = new System.Drawing.Point(35, 290);
             this.txtPassword.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtPassword.MinimumSize = new System.Drawing.Size(1, 16);
@@ -183,7 +183,7 @@ namespace SupermarketApp.Forms
             // txtConfirmPassword
             // 
             this.txtConfirmPassword.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtConfirmPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.txtConfirmPassword.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.txtConfirmPassword.Location = new System.Drawing.Point(35, 370);
             this.txtConfirmPassword.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtConfirmPassword.MinimumSize = new System.Drawing.Size(1, 16);

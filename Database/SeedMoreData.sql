@@ -106,15 +106,15 @@ GO
 -- =============================================
 -- 7. THÊM HÓA ĐƠN BÁN HÀNG (lịch sử)
 -- =============================================
-INSERT INTO HOADON (MaKH, MaNV, NgayLap, TongTien, GhiChu) VALUES
-(1, 2, DATEADD(DAY, -7, GETDATE()), 250000, N'Khách thân thiết'),
-(2, 3, DATEADD(DAY, -6, GETDATE()), 450000, N'Mua nhiều sản phẩm'),
-(3, 4, DATEADD(DAY, -5, GETDATE()), 125000, N'Mua bánh keo'),
-(4, 2, DATEADD(DAY, -4, GETDATE()), 380000, N'Mua đồ dùng'),
-(5, 3, DATEADD(DAY, -3, GETDATE()), 620000, N'Mua thực phẩm'),
-(6, 4, DATEADD(DAY, -2, GETDATE()), 290000, N'Mua hàng tươi'),
-(7, 2, DATEADD(DAY, -1, GETDATE()), 180000, N'Mua đồ uống'),
-(8, 3, GETDATE(), 520000, N'Mua sản phẩm chăm sóc');
+INSERT INTO HOADON (MaKH, MaNV, NgayLap, TongTien) VALUES
+(1, 2, DATEADD(DAY, -7, GETDATE()), 250000),
+(2, 3, DATEADD(DAY, -6, GETDATE()), 450000),
+(3, 4, DATEADD(DAY, -5, GETDATE()), 125000),
+(4, 2, DATEADD(DAY, -4, GETDATE()), 380000),
+(5, 3, DATEADD(DAY, -3, GETDATE()), 620000),
+(6, 4, DATEADD(DAY, -2, GETDATE()), 290000),
+(7, 2, DATEADD(DAY, -1, GETDATE()), 180000),
+(8, 3, GETDATE(), 520000);
 GO
 
 -- =============================================

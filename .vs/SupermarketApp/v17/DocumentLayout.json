@@ -1,0 +1,671 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\ASUS\\OneDrive\\M\u00E1y t\u00EDnh\\QuanLyBanHnagSieuThi\\QuanLyBanHnagSieuThi\\SupermarketApp\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{3A2AF0B7-6E36-4C5D-9A44-2D178D3E0F1C}|SupermarketApp.csproj|C:\\Users\\ASUS\\OneDrive\\M\u00E1y t\u00EDnh\\QuanLyBanHnagSieuThi\\QuanLyBanHnagSieuThi\\SupermarketApp\\forms\\reportform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{3A2AF0B7-6E36-4C5D-9A44-2D178D3E0F1C}|SupermarketApp.csproj|solutionrelative:forms\\reportform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3A2AF0B7-6E36-4C5D-9A44-2D178D3E0F1C}|SupermarketApp.csproj|C:\\Users\\ASUS\\OneDrive\\M\u00E1y t\u00EDnh\\QuanLyBanHnagSieuThi\\QuanLyBanHnagSieuThi\\SupermarketApp\\forms\\registerform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{3A2AF0B7-6E36-4C5D-9A44-2D178D3E0F1C}|SupermarketApp.csproj|solutionrelative:forms\\registerform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3A2AF0B7-6E36-4C5D-9A44-2D178D3E0F1C}|SupermarketApp.csproj|C:\\Users\\ASUS\\OneDrive\\M\u00E1y t\u00EDnh\\QuanLyBanHnagSieuThi\\QuanLyBanHnagSieuThi\\SupermarketApp\\forms\\settingsform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{3A2AF0B7-6E36-4C5D-9A44-2D178D3E0F1C}|SupermarketApp.csproj|solutionrelative:forms\\settingsform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3A2AF0B7-6E36-4C5D-9A44-2D178D3E0F1C}|SupermarketApp.csproj|c:\\users\\asus\\onedrive\\m\u00E1y t\u00EDnh\\quanlybanhnagsieuthi\\quanlybanhnagsieuthi\\supermarketapp\\forms\\supplierform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{3A2AF0B7-6E36-4C5D-9A44-2D178D3E0F1C}|SupermarketApp.csproj|solutionrelative:forms\\supplierform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3A2AF0B7-6E36-4C5D-9A44-2D178D3E0F1C}|SupermarketApp.csproj|C:\\Users\\ASUS\\OneDrive\\M\u00E1y t\u00EDnh\\QuanLyBanHnagSieuThi\\QuanLyBanHnagSieuThi\\SupermarketApp\\forms\\purchaseorderform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{3A2AF0B7-6E36-4C5D-9A44-2D178D3E0F1C}|SupermarketApp.csproj|solutionrelative:forms\\purchaseorderform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3A2AF0B7-6E36-4C5D-9A44-2D178D3E0F1C}|SupermarketApp.csproj|C:\\Users\\ASUS\\OneDrive\\M\u00E1y t\u00EDnh\\QuanLyBanHnagSieuThi\\QuanLyBanHnagSieuThi\\SupermarketApp\\forms\\productform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{3A2AF0B7-6E36-4C5D-9A44-2D178D3E0F1C}|SupermarketApp.csproj|solutionrelative:forms\\productform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3A2AF0B7-6E36-4C5D-9A44-2D178D3E0F1C}|SupermarketApp.csproj|C:\\Users\\ASUS\\OneDrive\\M\u00E1y t\u00EDnh\\QuanLyBanHnagSieuThi\\QuanLyBanHnagSieuThi\\SupermarketApp\\forms\\mainform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{3A2AF0B7-6E36-4C5D-9A44-2D178D3E0F1C}|SupermarketApp.csproj|solutionrelative:forms\\mainform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3A2AF0B7-6E36-4C5D-9A44-2D178D3E0F1C}|SupermarketApp.csproj|C:\\Users\\ASUS\\OneDrive\\M\u00E1y t\u00EDnh\\QuanLyBanHnagSieuThi\\QuanLyBanHnagSieuThi\\SupermarketApp\\forms\\loginform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{3A2AF0B7-6E36-4C5D-9A44-2D178D3E0F1C}|SupermarketApp.csproj|solutionrelative:forms\\loginform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3A2AF0B7-6E36-4C5D-9A44-2D178D3E0F1C}|SupermarketApp.csproj|C:\\Users\\ASUS\\OneDrive\\M\u00E1y t\u00EDnh\\QuanLyBanHnagSieuThi\\QuanLyBanHnagSieuThi\\SupermarketApp\\forms\\invoiceprintdialog.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{3A2AF0B7-6E36-4C5D-9A44-2D178D3E0F1C}|SupermarketApp.csproj|solutionrelative:forms\\invoiceprintdialog.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3A2AF0B7-6E36-4C5D-9A44-2D178D3E0F1C}|SupermarketApp.csproj|C:\\Users\\ASUS\\OneDrive\\M\u00E1y t\u00EDnh\\QuanLyBanHnagSieuThi\\QuanLyBanHnagSieuThi\\SupermarketApp\\forms\\invoicehistoryform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{3A2AF0B7-6E36-4C5D-9A44-2D178D3E0F1C}|SupermarketApp.csproj|solutionrelative:forms\\invoicehistoryform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3A2AF0B7-6E36-4C5D-9A44-2D178D3E0F1C}|SupermarketApp.csproj|C:\\Users\\ASUS\\OneDrive\\M\u00E1y t\u00EDnh\\QuanLyBanHnagSieuThi\\QuanLyBanHnagSieuThi\\SupermarketApp\\forms\\invoiceform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{3A2AF0B7-6E36-4C5D-9A44-2D178D3E0F1C}|SupermarketApp.csproj|solutionrelative:forms\\invoiceform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3A2AF0B7-6E36-4C5D-9A44-2D178D3E0F1C}|SupermarketApp.csproj|C:\\Users\\ASUS\\OneDrive\\M\u00E1y t\u00EDnh\\QuanLyBanHnagSieuThi\\QuanLyBanHnagSieuThi\\SupermarketApp\\forms\\employeeform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{3A2AF0B7-6E36-4C5D-9A44-2D178D3E0F1C}|SupermarketApp.csproj|solutionrelative:forms\\employeeform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3A2AF0B7-6E36-4C5D-9A44-2D178D3E0F1C}|SupermarketApp.csproj|C:\\Users\\ASUS\\OneDrive\\M\u00E1y t\u00EDnh\\QuanLyBanHnagSieuThi\\QuanLyBanHnagSieuThi\\SupermarketApp\\forms\\inventoryform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{3A2AF0B7-6E36-4C5D-9A44-2D178D3E0F1C}|SupermarketApp.csproj|solutionrelative:forms\\inventoryform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3A2AF0B7-6E36-4C5D-9A44-2D178D3E0F1C}|SupermarketApp.csproj|C:\\Users\\ASUS\\OneDrive\\M\u00E1y t\u00EDnh\\QuanLyBanHnagSieuThi\\QuanLyBanHnagSieuThi\\SupermarketApp\\forms\\customerform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{3A2AF0B7-6E36-4C5D-9A44-2D178D3E0F1C}|SupermarketApp.csproj|solutionrelative:forms\\customerform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3A2AF0B7-6E36-4C5D-9A44-2D178D3E0F1C}|SupermarketApp.csproj|C:\\Users\\ASUS\\OneDrive\\M\u00E1y t\u00EDnh\\QuanLyBanHnagSieuThi\\QuanLyBanHnagSieuThi\\SupermarketApp\\forms\\productdialog.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{3A2AF0B7-6E36-4C5D-9A44-2D178D3E0F1C}|SupermarketApp.csproj|solutionrelative:forms\\productdialog.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3A2AF0B7-6E36-4C5D-9A44-2D178D3E0F1C}|SupermarketApp.csproj|C:\\Users\\ASUS\\OneDrive\\M\u00E1y t\u00EDnh\\QuanLyBanHnagSieuThi\\QuanLyBanHnagSieuThi\\SupermarketApp\\Forms\\CustomerForm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3A2AF0B7-6E36-4C5D-9A44-2D178D3E0F1C}|SupermarketApp.csproj|solutionrelative:Forms\\CustomerForm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3A2AF0B7-6E36-4C5D-9A44-2D178D3E0F1C}|SupermarketApp.csproj|C:\\Users\\ASUS\\OneDrive\\M\u00E1y t\u00EDnh\\QuanLyBanHnagSieuThi\\QuanLyBanHnagSieuThi\\SupermarketApp\\forms\\mainform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3A2AF0B7-6E36-4C5D-9A44-2D178D3E0F1C}|SupermarketApp.csproj|solutionrelative:forms\\mainform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3A2AF0B7-6E36-4C5D-9A44-2D178D3E0F1C}|SupermarketApp.csproj|C:\\Users\\ASUS\\OneDrive\\M\u00E1y t\u00EDnh\\QuanLyBanHnagSieuThi\\QuanLyBanHnagSieuThi\\SupermarketApp\\forms\\reportform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3A2AF0B7-6E36-4C5D-9A44-2D178D3E0F1C}|SupermarketApp.csproj|solutionrelative:forms\\reportform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3A2AF0B7-6E36-4C5D-9A44-2D178D3E0F1C}|SupermarketApp.csproj|C:\\Users\\ASUS\\OneDrive\\M\u00E1y t\u00EDnh\\QuanLyBanHnagSieuThi\\QuanLyBanHnagSieuThi\\SupermarketApp\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3A2AF0B7-6E36-4C5D-9A44-2D178D3E0F1C}|SupermarketApp.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3A2AF0B7-6E36-4C5D-9A44-2D178D3E0F1C}|SupermarketApp.csproj|C:\\Users\\ASUS\\OneDrive\\M\u00E1y t\u00EDnh\\QuanLyBanHnagSieuThi\\QuanLyBanHnagSieuThi\\SupermarketApp\\forms\\loginform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3A2AF0B7-6E36-4C5D-9A44-2D178D3E0F1C}|SupermarketApp.csproj|solutionrelative:forms\\loginform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\ASUS\\Downloads\\LoginForm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3A2AF0B7-6E36-4C5D-9A44-2D178D3E0F1C}|SupermarketApp.csproj|C:\\Users\\ASUS\\OneDrive\\M\u00E1y t\u00EDnh\\QuanLyBanHnagSieuThi\\QuanLyBanHnagSieuThi\\SupermarketApp\\AppConfigHelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3A2AF0B7-6E36-4C5D-9A44-2D178D3E0F1C}|SupermarketApp.csproj|solutionrelative:AppConfigHelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3A2AF0B7-6E36-4C5D-9A44-2D178D3E0F1C}|SupermarketApp.csproj|C:\\Users\\ASUS\\OneDrive\\M\u00E1y t\u00EDnh\\QuanLyBanHnagSieuThi\\QuanLyBanHnagSieuThi\\SupermarketApp\\Services\\InvoiceService.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3A2AF0B7-6E36-4C5D-9A44-2D178D3E0F1C}|SupermarketApp.csproj|solutionrelative:Services\\InvoiceService.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3A2AF0B7-6E36-4C5D-9A44-2D178D3E0F1C}|SupermarketApp.csproj|C:\\Users\\ASUS\\OneDrive\\M\u00E1y t\u00EDnh\\QuanLyBanHnagSieuThi\\QuanLyBanHnagSieuThi\\SupermarketApp\\Services\\AuthService.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3A2AF0B7-6E36-4C5D-9A44-2D178D3E0F1C}|SupermarketApp.csproj|solutionrelative:Services\\AuthService.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3A2AF0B7-6E36-4C5D-9A44-2D178D3E0F1C}|SupermarketApp.csproj|C:\\Users\\ASUS\\OneDrive\\M\u00E1y t\u00EDnh\\QuanLyBanHnagSieuThi\\QuanLyBanHnagSieuThi\\SupermarketApp\\Services\\SettingsService.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3A2AF0B7-6E36-4C5D-9A44-2D178D3E0F1C}|SupermarketApp.csproj|solutionrelative:Services\\SettingsService.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3A2AF0B7-6E36-4C5D-9A44-2D178D3E0F1C}|SupermarketApp.csproj|C:\\Users\\ASUS\\OneDrive\\M\u00E1y t\u00EDnh\\QuanLyBanHnagSieuThi\\QuanLyBanHnagSieuThi\\SupermarketApp\\Services\\ProductService.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3A2AF0B7-6E36-4C5D-9A44-2D178D3E0F1C}|SupermarketApp.csproj|solutionrelative:Services\\ProductService.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3A2AF0B7-6E36-4C5D-9A44-2D178D3E0F1C}|SupermarketApp.csproj|C:\\Users\\ASUS\\OneDrive\\M\u00E1y t\u00EDnh\\QuanLyBanHnagSieuThi\\QuanLyBanHnagSieuThi\\SupermarketApp\\Forms\\RegisterForm.resx||{81828910-B8B3-4D2B-99A3-067027C180C1}",
+      "RelativeMoniker": "D:0:0:{3A2AF0B7-6E36-4C5D-9A44-2D178D3E0F1C}|SupermarketApp.csproj|solutionrelative:Forms\\RegisterForm.resx||{81828910-B8B3-4D2B-99A3-067027C180C1}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3A2AF0B7-6E36-4C5D-9A44-2D178D3E0F1C}|SupermarketApp.csproj|C:\\Users\\ASUS\\OneDrive\\M\u00E1y t\u00EDnh\\QuanLyBanHnagSieuThi\\QuanLyBanHnagSieuThi\\SupermarketApp\\Forms\\ReportForm.resx||{81828910-B8B3-4D2B-99A3-067027C180C1}",
+      "RelativeMoniker": "D:0:0:{3A2AF0B7-6E36-4C5D-9A44-2D178D3E0F1C}|SupermarketApp.csproj|solutionrelative:Forms\\ReportForm.resx||{81828910-B8B3-4D2B-99A3-067027C180C1}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3A2AF0B7-6E36-4C5D-9A44-2D178D3E0F1C}|SupermarketApp.csproj|C:\\Users\\ASUS\\OneDrive\\M\u00E1y t\u00EDnh\\QuanLyBanHnagSieuThi\\QuanLyBanHnagSieuThi\\SupermarketApp\\Resources\\background-san-pham-06.jpg||{177559E0-D141-11D0-92DF-00A0C9138C45}",
+      "RelativeMoniker": "D:0:0:{3A2AF0B7-6E36-4C5D-9A44-2D178D3E0F1C}|SupermarketApp.csproj|solutionrelative:Resources\\background-san-pham-06.jpg||{177559E0-D141-11D0-92DF-00A0C9138C45}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3A2AF0B7-6E36-4C5D-9A44-2D178D3E0F1C}|SupermarketApp.csproj|C:\\Users\\ASUS\\OneDrive\\M\u00E1y t\u00EDnh\\QuanLyBanHnagSieuThi\\QuanLyBanHnagSieuThi\\SupermarketApp\\Data\\SupermarketContext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3A2AF0B7-6E36-4C5D-9A44-2D178D3E0F1C}|SupermarketApp.csproj|solutionrelative:Data\\SupermarketContext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3A2AF0B7-6E36-4C5D-9A44-2D178D3E0F1C}|SupermarketApp.csproj|C:\\Users\\ASUS\\OneDrive\\M\u00E1y t\u00EDnh\\QuanLyBanHnagSieuThi\\QuanLyBanHnagSieuThi\\SupermarketApp\\Forms\\ProductForm.resx||{81828910-B8B3-4D2B-99A3-067027C180C1}",
+      "RelativeMoniker": "D:0:0:{3A2AF0B7-6E36-4C5D-9A44-2D178D3E0F1C}|SupermarketApp.csproj|solutionrelative:Forms\\ProductForm.resx||{81828910-B8B3-4D2B-99A3-067027C180C1}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3A2AF0B7-6E36-4C5D-9A44-2D178D3E0F1C}|SupermarketApp.csproj|C:\\Users\\ASUS\\OneDrive\\M\u00E1y t\u00EDnh\\QuanLyBanHnagSieuThi\\QuanLyBanHnagSieuThi\\SupermarketApp\\Forms\\MainForm.resx||{81828910-B8B3-4D2B-99A3-067027C180C1}",
+      "RelativeMoniker": "D:0:0:{3A2AF0B7-6E36-4C5D-9A44-2D178D3E0F1C}|SupermarketApp.csproj|solutionrelative:Forms\\MainForm.resx||{81828910-B8B3-4D2B-99A3-067027C180C1}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3A2AF0B7-6E36-4C5D-9A44-2D178D3E0F1C}|SupermarketApp.csproj|C:\\Users\\ASUS\\OneDrive\\M\u00E1y t\u00EDnh\\QuanLyBanHnagSieuThi\\QuanLyBanHnagSieuThi\\SupermarketApp\\Forms\\CustomerForm.resx||{81828910-B8B3-4D2B-99A3-067027C180C1}",
+      "RelativeMoniker": "D:0:0:{3A2AF0B7-6E36-4C5D-9A44-2D178D3E0F1C}|SupermarketApp.csproj|solutionrelative:Forms\\CustomerForm.resx||{81828910-B8B3-4D2B-99A3-067027C180C1}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3A2AF0B7-6E36-4C5D-9A44-2D178D3E0F1C}|SupermarketApp.csproj|C:\\Users\\ASUS\\OneDrive\\M\u00E1y t\u00EDnh\\QuanLyBanHnagSieuThi\\QuanLyBanHnagSieuThi\\SupermarketApp\\Data\\Models\\HoaDon.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3A2AF0B7-6E36-4C5D-9A44-2D178D3E0F1C}|SupermarketApp.csproj|solutionrelative:Data\\Models\\HoaDon.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3A2AF0B7-6E36-4C5D-9A44-2D178D3E0F1C}|SupermarketApp.csproj|C:\\Users\\ASUS\\OneDrive\\M\u00E1y t\u00EDnh\\QuanLyBanHnagSieuThi\\QuanLyBanHnagSieuThi\\SupermarketApp\\Data\\Models\\KhachHang.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3A2AF0B7-6E36-4C5D-9A44-2D178D3E0F1C}|SupermarketApp.csproj|solutionrelative:Data\\Models\\KhachHang.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3A2AF0B7-6E36-4C5D-9A44-2D178D3E0F1C}|SupermarketApp.csproj|C:\\Users\\ASUS\\OneDrive\\M\u00E1y t\u00EDnh\\QuanLyBanHnagSieuThi\\QuanLyBanHnagSieuThi\\SupermarketApp\\Data\\Models\\NhanVien.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3A2AF0B7-6E36-4C5D-9A44-2D178D3E0F1C}|SupermarketApp.csproj|solutionrelative:Data\\Models\\NhanVien.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3A2AF0B7-6E36-4C5D-9A44-2D178D3E0F1C}|SupermarketApp.csproj|C:\\Users\\ASUS\\OneDrive\\M\u00E1y t\u00EDnh\\QuanLyBanHnagSieuThi\\QuanLyBanHnagSieuThi\\SupermarketApp\\Data\\Models\\SanPham.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3A2AF0B7-6E36-4C5D-9A44-2D178D3E0F1C}|SupermarketApp.csproj|solutionrelative:Data\\Models\\SanPham.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3A2AF0B7-6E36-4C5D-9A44-2D178D3E0F1C}|SupermarketApp.csproj|C:\\Users\\ASUS\\OneDrive\\M\u00E1y t\u00EDnh\\QuanLyBanHnagSieuThi\\QuanLyBanHnagSieuThi\\SupermarketApp\\Data\\Models\\CTHoaDon.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3A2AF0B7-6E36-4C5D-9A44-2D178D3E0F1C}|SupermarketApp.csproj|solutionrelative:Data\\Models\\CTHoaDon.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3A2AF0B7-6E36-4C5D-9A44-2D178D3E0F1C}|SupermarketApp.csproj|C:\\Users\\ASUS\\OneDrive\\M\u00E1y t\u00EDnh\\QuanLyBanHnagSieuThi\\QuanLyBanHnagSieuThi\\SupermarketApp\\App.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
+      "RelativeMoniker": "D:0:0:{3A2AF0B7-6E36-4C5D-9A44-2D178D3E0F1C}|SupermarketApp.csproj|solutionrelative:App.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 1,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedHeight": 250,
+          "SelectedChildIndex": 6,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{b1e99781-ab81-11d0-b683-00aa00a3ee26}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "PurchaseOrderForm.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\ASUS\\OneDrive\\M\u00E1y t\u00EDnh\\QuanLyBanHnagSieuThi\\QuanLyBanHnagSieuThi\\SupermarketApp\\Forms\\PurchaseOrderForm.cs",
+              "RelativeDocumentMoniker": "Forms\\PurchaseOrderForm.cs",
+              "ToolTip": "C:\\Users\\ASUS\\OneDrive\\M\u00E1y t\u00EDnh\\QuanLyBanHnagSieuThi\\QuanLyBanHnagSieuThi\\SupermarketApp\\Forms\\PurchaseOrderForm.cs [Design]",
+              "RelativeToolTip": "Forms\\PurchaseOrderForm.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-21T07:04:56.231Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "RegisterForm.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\ASUS\\OneDrive\\M\u00E1y t\u00EDnh\\QuanLyBanHnagSieuThi\\QuanLyBanHnagSieuThi\\SupermarketApp\\Forms\\RegisterForm.cs",
+              "RelativeDocumentMoniker": "Forms\\RegisterForm.cs",
+              "ToolTip": "C:\\Users\\ASUS\\OneDrive\\M\u00E1y t\u00EDnh\\QuanLyBanHnagSieuThi\\QuanLyBanHnagSieuThi\\SupermarketApp\\Forms\\RegisterForm.cs [Design]",
+              "RelativeToolTip": "Forms\\RegisterForm.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-19T10:42:20.056Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "SupplierForm.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\ASUS\\OneDrive\\M\u00E1y t\u00EDnh\\QuanLyBanHnagSieuThi\\QuanLyBanHnagSieuThi\\SupermarketApp\\Forms\\SupplierForm.cs",
+              "RelativeDocumentMoniker": "Forms\\SupplierForm.cs",
+              "ToolTip": "C:\\Users\\ASUS\\OneDrive\\M\u00E1y t\u00EDnh\\QuanLyBanHnagSieuThi\\QuanLyBanHnagSieuThi\\SupermarketApp\\Forms\\SupplierForm.cs [Design]",
+              "RelativeToolTip": "Forms\\SupplierForm.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-21T07:05:07.193Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "ReportForm.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\ASUS\\OneDrive\\M\u00E1y t\u00EDnh\\QuanLyBanHnagSieuThi\\QuanLyBanHnagSieuThi\\SupermarketApp\\Forms\\ReportForm.cs",
+              "RelativeDocumentMoniker": "Forms\\ReportForm.cs",
+              "ToolTip": "C:\\Users\\ASUS\\OneDrive\\M\u00E1y t\u00EDnh\\QuanLyBanHnagSieuThi\\QuanLyBanHnagSieuThi\\SupermarketApp\\Forms\\ReportForm.cs [Design]",
+              "RelativeToolTip": "Forms\\ReportForm.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-19T10:42:18.941Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "SettingsForm.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\ASUS\\OneDrive\\M\u00E1y t\u00EDnh\\QuanLyBanHnagSieuThi\\QuanLyBanHnagSieuThi\\SupermarketApp\\Forms\\SettingsForm.cs",
+              "RelativeDocumentMoniker": "Forms\\SettingsForm.cs",
+              "ToolTip": "C:\\Users\\ASUS\\OneDrive\\M\u00E1y t\u00EDnh\\QuanLyBanHnagSieuThi\\QuanLyBanHnagSieuThi\\SupermarketApp\\Forms\\SettingsForm.cs [Design]",
+              "RelativeToolTip": "Forms\\SettingsForm.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-21T07:05:02.42Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "ProductForm.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\ASUS\\OneDrive\\M\u00E1y t\u00EDnh\\QuanLyBanHnagSieuThi\\QuanLyBanHnagSieuThi\\SupermarketApp\\Forms\\ProductForm.cs",
+              "RelativeDocumentMoniker": "Forms\\ProductForm.cs",
+              "ToolTip": "C:\\Users\\ASUS\\OneDrive\\M\u00E1y t\u00EDnh\\QuanLyBanHnagSieuThi\\QuanLyBanHnagSieuThi\\SupermarketApp\\Forms\\ProductForm.cs [Design]",
+              "RelativeToolTip": "Forms\\ProductForm.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-16T08:31:07.01Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "MainForm.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\ASUS\\OneDrive\\M\u00E1y t\u00EDnh\\QuanLyBanHnagSieuThi\\QuanLyBanHnagSieuThi\\SupermarketApp\\Forms\\MainForm.cs",
+              "RelativeDocumentMoniker": "Forms\\MainForm.cs",
+              "ToolTip": "C:\\Users\\ASUS\\OneDrive\\M\u00E1y t\u00EDnh\\QuanLyBanHnagSieuThi\\QuanLyBanHnagSieuThi\\SupermarketApp\\Forms\\MainForm.cs [Design]",
+              "RelativeToolTip": "Forms\\MainForm.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-16T08:30:54.043Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "LoginForm.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\ASUS\\OneDrive\\M\u00E1y t\u00EDnh\\QuanLyBanHnagSieuThi\\QuanLyBanHnagSieuThi\\SupermarketApp\\Forms\\LoginForm.cs",
+              "RelativeDocumentMoniker": "Forms\\LoginForm.cs",
+              "ToolTip": "C:\\Users\\ASUS\\OneDrive\\M\u00E1y t\u00EDnh\\QuanLyBanHnagSieuThi\\QuanLyBanHnagSieuThi\\SupermarketApp\\Forms\\LoginForm.cs [Design]",
+              "RelativeToolTip": "Forms\\LoginForm.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-16T08:31:04.21Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "InvoicePrintDialog.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\ASUS\\OneDrive\\M\u00E1y t\u00EDnh\\QuanLyBanHnagSieuThi\\QuanLyBanHnagSieuThi\\SupermarketApp\\Forms\\InvoicePrintDialog.cs",
+              "RelativeDocumentMoniker": "Forms\\InvoicePrintDialog.cs",
+              "ToolTip": "C:\\Users\\ASUS\\OneDrive\\M\u00E1y t\u00EDnh\\QuanLyBanHnagSieuThi\\QuanLyBanHnagSieuThi\\SupermarketApp\\Forms\\InvoicePrintDialog.cs [Design]",
+              "RelativeToolTip": "Forms\\InvoicePrintDialog.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-21T07:04:44.325Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "InvoiceHistoryForm.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\ASUS\\OneDrive\\M\u00E1y t\u00EDnh\\QuanLyBanHnagSieuThi\\QuanLyBanHnagSieuThi\\SupermarketApp\\Forms\\InvoiceHistoryForm.cs",
+              "RelativeDocumentMoniker": "Forms\\InvoiceHistoryForm.cs",
+              "ToolTip": "C:\\Users\\ASUS\\OneDrive\\M\u00E1y t\u00EDnh\\QuanLyBanHnagSieuThi\\QuanLyBanHnagSieuThi\\SupermarketApp\\Forms\\InvoiceHistoryForm.cs [Design]",
+              "RelativeToolTip": "Forms\\InvoiceHistoryForm.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-21T07:04:42.808Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "InvoiceForm.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\ASUS\\OneDrive\\M\u00E1y t\u00EDnh\\QuanLyBanHnagSieuThi\\QuanLyBanHnagSieuThi\\SupermarketApp\\Forms\\InvoiceForm.cs",
+              "RelativeDocumentMoniker": "Forms\\InvoiceForm.cs",
+              "ToolTip": "C:\\Users\\ASUS\\OneDrive\\M\u00E1y t\u00EDnh\\QuanLyBanHnagSieuThi\\QuanLyBanHnagSieuThi\\SupermarketApp\\Forms\\InvoiceForm.cs [Design]",
+              "RelativeToolTip": "Forms\\InvoiceForm.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-16T08:31:05.349Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "EmployeeForm.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\ASUS\\OneDrive\\M\u00E1y t\u00EDnh\\QuanLyBanHnagSieuThi\\QuanLyBanHnagSieuThi\\SupermarketApp\\Forms\\EmployeeForm.cs",
+              "RelativeDocumentMoniker": "Forms\\EmployeeForm.cs",
+              "ToolTip": "C:\\Users\\ASUS\\OneDrive\\M\u00E1y t\u00EDnh\\QuanLyBanHnagSieuThi\\QuanLyBanHnagSieuThi\\SupermarketApp\\Forms\\EmployeeForm.cs [Design]",
+              "RelativeToolTip": "Forms\\EmployeeForm.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-21T07:04:35.552Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "InventoryForm.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\ASUS\\OneDrive\\M\u00E1y t\u00EDnh\\QuanLyBanHnagSieuThi\\QuanLyBanHnagSieuThi\\SupermarketApp\\Forms\\InventoryForm.cs",
+              "RelativeDocumentMoniker": "Forms\\InventoryForm.cs",
+              "ToolTip": "C:\\Users\\ASUS\\OneDrive\\M\u00E1y t\u00EDnh\\QuanLyBanHnagSieuThi\\QuanLyBanHnagSieuThi\\SupermarketApp\\Forms\\InventoryForm.cs [Design]",
+              "RelativeToolTip": "Forms\\InventoryForm.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-21T07:04:38.309Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "CustomerForm.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\ASUS\\OneDrive\\M\u00E1y t\u00EDnh\\QuanLyBanHnagSieuThi\\QuanLyBanHnagSieuThi\\SupermarketApp\\Forms\\CustomerForm.cs",
+              "RelativeDocumentMoniker": "Forms\\CustomerForm.cs",
+              "ToolTip": "C:\\Users\\ASUS\\OneDrive\\M\u00E1y t\u00EDnh\\QuanLyBanHnagSieuThi\\QuanLyBanHnagSieuThi\\SupermarketApp\\Forms\\CustomerForm.cs [Design]",
+              "RelativeToolTip": "Forms\\CustomerForm.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-16T07:59:37.689Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "ProductDialog.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\ASUS\\OneDrive\\M\u00E1y t\u00EDnh\\QuanLyBanHnagSieuThi\\QuanLyBanHnagSieuThi\\SupermarketApp\\Forms\\ProductDialog.cs",
+              "RelativeDocumentMoniker": "Forms\\ProductDialog.cs",
+              "ToolTip": "C:\\Users\\ASUS\\OneDrive\\M\u00E1y t\u00EDnh\\QuanLyBanHnagSieuThi\\QuanLyBanHnagSieuThi\\SupermarketApp\\Forms\\ProductDialog.cs [Design]",
+              "RelativeToolTip": "Forms\\ProductDialog.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-21T07:04:49.566Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "CustomerForm.cs",
+              "DocumentMoniker": "C:\\Users\\ASUS\\OneDrive\\M\u00E1y t\u00EDnh\\QuanLyBanHnagSieuThi\\QuanLyBanHnagSieuThi\\SupermarketApp\\Forms\\CustomerForm.cs",
+              "RelativeDocumentMoniker": "Forms\\CustomerForm.cs",
+              "ToolTip": "C:\\Users\\ASUS\\OneDrive\\M\u00E1y t\u00EDnh\\QuanLyBanHnagSieuThi\\QuanLyBanHnagSieuThi\\SupermarketApp\\Forms\\CustomerForm.cs",
+              "RelativeToolTip": "Forms\\CustomerForm.cs",
+              "ViewState": "AgIAAH8CAAAAAAAAAAAswI0CAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-16T08:37:25.916Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "MainForm.cs",
+              "DocumentMoniker": "C:\\Users\\ASUS\\OneDrive\\M\u00E1y t\u00EDnh\\QuanLyBanHnagSieuThi\\QuanLyBanHnagSieuThi\\SupermarketApp\\Forms\\MainForm.cs",
+              "RelativeDocumentMoniker": "Forms\\MainForm.cs",
+              "ToolTip": "C:\\Users\\ASUS\\OneDrive\\M\u00E1y t\u00EDnh\\QuanLyBanHnagSieuThi\\QuanLyBanHnagSieuThi\\SupermarketApp\\Forms\\MainForm.cs",
+              "RelativeToolTip": "Forms\\MainForm.cs",
+              "ViewState": "AgIAAMUCAAAAAAAAAAApwNUCAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-20T14:28:14.678Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "ReportForm.cs",
+              "DocumentMoniker": "C:\\Users\\ASUS\\OneDrive\\M\u00E1y t\u00EDnh\\QuanLyBanHnagSieuThi\\QuanLyBanHnagSieuThi\\SupermarketApp\\Forms\\ReportForm.cs",
+              "RelativeDocumentMoniker": "Forms\\ReportForm.cs",
+              "ToolTip": "C:\\Users\\ASUS\\OneDrive\\M\u00E1y t\u00EDnh\\QuanLyBanHnagSieuThi\\QuanLyBanHnagSieuThi\\SupermarketApp\\Forms\\ReportForm.cs",
+              "RelativeToolTip": "Forms\\ReportForm.cs",
+              "ViewState": "AgIAAFUBAAAAAAAAAAAqwGEBAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-28T16:08:47.992Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\ASUS\\OneDrive\\M\u00E1y t\u00EDnh\\QuanLyBanHnagSieuThi\\QuanLyBanHnagSieuThi\\SupermarketApp\\Program.cs",
+              "RelativeDocumentMoniker": "Program.cs",
+              "ToolTip": "C:\\Users\\ASUS\\OneDrive\\M\u00E1y t\u00EDnh\\QuanLyBanHnagSieuThi\\QuanLyBanHnagSieuThi\\SupermarketApp\\Program.cs",
+              "RelativeToolTip": "Program.cs",
+              "ViewState": "AgIAAAQAAAAAAAAAAAApwAsAAAAaAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-16T07:47:06.159Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "LoginForm.cs",
+              "DocumentMoniker": "C:\\Users\\ASUS\\OneDrive\\M\u00E1y t\u00EDnh\\QuanLyBanHnagSieuThi\\QuanLyBanHnagSieuThi\\SupermarketApp\\Forms\\LoginForm.cs",
+              "RelativeDocumentMoniker": "Forms\\LoginForm.cs",
+              "ToolTip": "C:\\Users\\ASUS\\OneDrive\\M\u00E1y t\u00EDnh\\QuanLyBanHnagSieuThi\\QuanLyBanHnagSieuThi\\SupermarketApp\\Forms\\LoginForm.cs",
+              "RelativeToolTip": "Forms\\LoginForm.cs",
+              "ViewState": "AgIAAMoAAAAAAAAAAAASwNAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-16T08:38:03.869Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 21,
+              "Title": "AppConfigHelper.cs",
+              "DocumentMoniker": "C:\\Users\\ASUS\\OneDrive\\M\u00E1y t\u00EDnh\\QuanLyBanHnagSieuThi\\QuanLyBanHnagSieuThi\\SupermarketApp\\AppConfigHelper.cs",
+              "RelativeDocumentMoniker": "AppConfigHelper.cs",
+              "ToolTip": "C:\\Users\\ASUS\\OneDrive\\M\u00E1y t\u00EDnh\\QuanLyBanHnagSieuThi\\QuanLyBanHnagSieuThi\\SupermarketApp\\AppConfigHelper.cs",
+              "RelativeToolTip": "AppConfigHelper.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-16T07:44:35.73Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 22,
+              "Title": "InvoiceService.cs",
+              "DocumentMoniker": "C:\\Users\\ASUS\\OneDrive\\M\u00E1y t\u00EDnh\\QuanLyBanHnagSieuThi\\QuanLyBanHnagSieuThi\\SupermarketApp\\Services\\InvoiceService.cs",
+              "RelativeDocumentMoniker": "Services\\InvoiceService.cs",
+              "ToolTip": "C:\\Users\\ASUS\\OneDrive\\M\u00E1y t\u00EDnh\\QuanLyBanHnagSieuThi\\QuanLyBanHnagSieuThi\\SupermarketApp\\Services\\InvoiceService.cs",
+              "RelativeToolTip": "Services\\InvoiceService.cs",
+              "ViewState": "AgIAAGEAAAAAAAAAAAAwwDkAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-16T07:46:55.162Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 23,
+              "Title": "AuthService.cs",
+              "DocumentMoniker": "C:\\Users\\ASUS\\OneDrive\\M\u00E1y t\u00EDnh\\QuanLyBanHnagSieuThi\\QuanLyBanHnagSieuThi\\SupermarketApp\\Services\\AuthService.cs",
+              "RelativeDocumentMoniker": "Services\\AuthService.cs",
+              "ToolTip": "C:\\Users\\ASUS\\OneDrive\\M\u00E1y t\u00EDnh\\QuanLyBanHnagSieuThi\\QuanLyBanHnagSieuThi\\SupermarketApp\\Services\\AuthService.cs",
+              "RelativeToolTip": "Services\\AuthService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAADEAAAAXAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-16T07:46:39.777Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 24,
+              "Title": "SettingsService.cs",
+              "DocumentMoniker": "C:\\Users\\ASUS\\OneDrive\\M\u00E1y t\u00EDnh\\QuanLyBanHnagSieuThi\\QuanLyBanHnagSieuThi\\SupermarketApp\\Services\\SettingsService.cs",
+              "RelativeDocumentMoniker": "Services\\SettingsService.cs",
+              "ToolTip": "C:\\Users\\ASUS\\OneDrive\\M\u00E1y t\u00EDnh\\QuanLyBanHnagSieuThi\\QuanLyBanHnagSieuThi\\SupermarketApp\\Services\\SettingsService.cs",
+              "RelativeToolTip": "Services\\SettingsService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-22T00:12:10.152Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 25,
+              "Title": "ProductService.cs",
+              "DocumentMoniker": "C:\\Users\\ASUS\\OneDrive\\M\u00E1y t\u00EDnh\\QuanLyBanHnagSieuThi\\QuanLyBanHnagSieuThi\\SupermarketApp\\Services\\ProductService.cs",
+              "RelativeDocumentMoniker": "Services\\ProductService.cs",
+              "ToolTip": "C:\\Users\\ASUS\\OneDrive\\M\u00E1y t\u00EDnh\\QuanLyBanHnagSieuThi\\QuanLyBanHnagSieuThi\\SupermarketApp\\Services\\ProductService.cs",
+              "RelativeToolTip": "Services\\ProductService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-19T12:23:32.835Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 26,
+              "Title": "RegisterForm.resx",
+              "DocumentMoniker": "C:\\Users\\ASUS\\OneDrive\\M\u00E1y t\u00EDnh\\QuanLyBanHnagSieuThi\\QuanLyBanHnagSieuThi\\SupermarketApp\\Forms\\RegisterForm.resx",
+              "RelativeDocumentMoniker": "Forms\\RegisterForm.resx",
+              "ToolTip": "C:\\Users\\ASUS\\OneDrive\\M\u00E1y t\u00EDnh\\QuanLyBanHnagSieuThi\\QuanLyBanHnagSieuThi\\SupermarketApp\\Forms\\RegisterForm.resx",
+              "RelativeToolTip": "Forms\\RegisterForm.resx",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001005|",
+              "WhenOpened": "2025-10-20T13:32:56.581Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 27,
+              "Title": "ReportForm.resx",
+              "DocumentMoniker": "C:\\Users\\ASUS\\OneDrive\\M\u00E1y t\u00EDnh\\QuanLyBanHnagSieuThi\\QuanLyBanHnagSieuThi\\SupermarketApp\\Forms\\ReportForm.resx",
+              "RelativeDocumentMoniker": "Forms\\ReportForm.resx",
+              "ToolTip": "C:\\Users\\ASUS\\OneDrive\\M\u00E1y t\u00EDnh\\QuanLyBanHnagSieuThi\\QuanLyBanHnagSieuThi\\SupermarketApp\\Forms\\ReportForm.resx",
+              "RelativeToolTip": "Forms\\ReportForm.resx",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001005|",
+              "WhenOpened": "2025-10-19T14:12:49.148Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 28,
+              "Title": "background-san-pham-06.jpg - Bitmap [800x534, 24 bit, JPG]",
+              "DocumentMoniker": "C:\\Users\\ASUS\\OneDrive\\M\u00E1y t\u00EDnh\\QuanLyBanHnagSieuThi\\QuanLyBanHnagSieuThi\\SupermarketApp\\Resources\\background-san-pham-06.jpg",
+              "RelativeDocumentMoniker": "Resources\\background-san-pham-06.jpg",
+              "ToolTip": "C:\\Users\\ASUS\\OneDrive\\M\u00E1y t\u00EDnh\\QuanLyBanHnagSieuThi\\QuanLyBanHnagSieuThi\\SupermarketApp\\Resources\\background-san-pham-06.jpg - Bitmap [800x534, 24 bit, JPG]",
+              "RelativeToolTip": "Resources\\background-san-pham-06.jpg - Bitmap [800x534, 24 bit, JPG]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001533|",
+              "WhenOpened": "2025-10-21T05:45:39.746Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 29,
+              "Title": "SupermarketContext.cs",
+              "DocumentMoniker": "C:\\Users\\ASUS\\OneDrive\\M\u00E1y t\u00EDnh\\QuanLyBanHnagSieuThi\\QuanLyBanHnagSieuThi\\SupermarketApp\\Data\\SupermarketContext.cs",
+              "RelativeDocumentMoniker": "Data\\SupermarketContext.cs",
+              "ToolTip": "C:\\Users\\ASUS\\OneDrive\\M\u00E1y t\u00EDnh\\QuanLyBanHnagSieuThi\\QuanLyBanHnagSieuThi\\SupermarketApp\\Data\\SupermarketContext.cs",
+              "RelativeToolTip": "Data\\SupermarketContext.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAVAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-16T07:46:07.473Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 30,
+              "Title": "ProductForm.resx",
+              "DocumentMoniker": "C:\\Users\\ASUS\\OneDrive\\M\u00E1y t\u00EDnh\\QuanLyBanHnagSieuThi\\QuanLyBanHnagSieuThi\\SupermarketApp\\Forms\\ProductForm.resx",
+              "RelativeDocumentMoniker": "Forms\\ProductForm.resx",
+              "ToolTip": "C:\\Users\\ASUS\\OneDrive\\M\u00E1y t\u00EDnh\\QuanLyBanHnagSieuThi\\QuanLyBanHnagSieuThi\\SupermarketApp\\Forms\\ProductForm.resx",
+              "RelativeToolTip": "Forms\\ProductForm.resx",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001005|",
+              "WhenOpened": "2025-10-20T13:41:33.958Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
+              "Title": "LoginForm.cs",
+              "DocumentMoniker": "C:\\Users\\ASUS\\Downloads\\LoginForm.cs",
+              "RelativeDocumentMoniker": "..\\..\\..\\..\\..\\Downloads\\LoginForm.cs",
+              "ToolTip": "C:\\Users\\ASUS\\Downloads\\LoginForm.cs",
+              "RelativeToolTip": "..\\..\\..\\..\\..\\Downloads\\LoginForm.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-20T13:13:31.763Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 31,
+              "Title": "MainForm.resx",
+              "DocumentMoniker": "C:\\Users\\ASUS\\OneDrive\\M\u00E1y t\u00EDnh\\QuanLyBanHnagSieuThi\\QuanLyBanHnagSieuThi\\SupermarketApp\\Forms\\MainForm.resx",
+              "RelativeDocumentMoniker": "Forms\\MainForm.resx",
+              "ToolTip": "C:\\Users\\ASUS\\OneDrive\\M\u00E1y t\u00EDnh\\QuanLyBanHnagSieuThi\\QuanLyBanHnagSieuThi\\SupermarketApp\\Forms\\MainForm.resx",
+              "RelativeToolTip": "Forms\\MainForm.resx",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001005|",
+              "WhenOpened": "2025-10-19T12:24:06.608Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 32,
+              "Title": "CustomerForm.resx",
+              "DocumentMoniker": "C:\\Users\\ASUS\\OneDrive\\M\u00E1y t\u00EDnh\\QuanLyBanHnagSieuThi\\QuanLyBanHnagSieuThi\\SupermarketApp\\Forms\\CustomerForm.resx",
+              "RelativeDocumentMoniker": "Forms\\CustomerForm.resx",
+              "ToolTip": "C:\\Users\\ASUS\\OneDrive\\M\u00E1y t\u00EDnh\\QuanLyBanHnagSieuThi\\QuanLyBanHnagSieuThi\\SupermarketApp\\Forms\\CustomerForm.resx",
+              "RelativeToolTip": "Forms\\CustomerForm.resx",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001005|",
+              "WhenOpened": "2025-10-19T12:23:59.84Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 33,
+              "Title": "HoaDon.cs",
+              "DocumentMoniker": "C:\\Users\\ASUS\\OneDrive\\M\u00E1y t\u00EDnh\\QuanLyBanHnagSieuThi\\QuanLyBanHnagSieuThi\\SupermarketApp\\Data\\Models\\HoaDon.cs",
+              "RelativeDocumentMoniker": "Data\\Models\\HoaDon.cs",
+              "ToolTip": "C:\\Users\\ASUS\\OneDrive\\M\u00E1y t\u00EDnh\\QuanLyBanHnagSieuThi\\QuanLyBanHnagSieuThi\\SupermarketApp\\Data\\Models\\HoaDon.cs",
+              "RelativeToolTip": "Data\\Models\\HoaDon.cs",
+              "ViewState": "AgIAAAwAAAAAAAAAAAAowAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-19T11:59:49.898Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 34,
+              "Title": "KhachHang.cs",
+              "DocumentMoniker": "C:\\Users\\ASUS\\OneDrive\\M\u00E1y t\u00EDnh\\QuanLyBanHnagSieuThi\\QuanLyBanHnagSieuThi\\SupermarketApp\\Data\\Models\\KhachHang.cs",
+              "RelativeDocumentMoniker": "Data\\Models\\KhachHang.cs",
+              "ToolTip": "C:\\Users\\ASUS\\OneDrive\\M\u00E1y t\u00EDnh\\QuanLyBanHnagSieuThi\\QuanLyBanHnagSieuThi\\SupermarketApp\\Data\\Models\\KhachHang.cs",
+              "RelativeToolTip": "Data\\Models\\KhachHang.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAA+wAoAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-16T08:32:49.606Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 35,
+              "Title": "NhanVien.cs",
+              "DocumentMoniker": "C:\\Users\\ASUS\\OneDrive\\M\u00E1y t\u00EDnh\\QuanLyBanHnagSieuThi\\QuanLyBanHnagSieuThi\\SupermarketApp\\Data\\Models\\NhanVien.cs",
+              "RelativeDocumentMoniker": "Data\\Models\\NhanVien.cs",
+              "ToolTip": "C:\\Users\\ASUS\\OneDrive\\M\u00E1y t\u00EDnh\\QuanLyBanHnagSieuThi\\QuanLyBanHnagSieuThi\\SupermarketApp\\Data\\Models\\NhanVien.cs",
+              "RelativeToolTip": "Data\\Models\\NhanVien.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-19T11:59:53.44Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 36,
+              "Title": "SanPham.cs",
+              "DocumentMoniker": "C:\\Users\\ASUS\\OneDrive\\M\u00E1y t\u00EDnh\\QuanLyBanHnagSieuThi\\QuanLyBanHnagSieuThi\\SupermarketApp\\Data\\Models\\SanPham.cs",
+              "RelativeDocumentMoniker": "Data\\Models\\SanPham.cs",
+              "ToolTip": "C:\\Users\\ASUS\\OneDrive\\M\u00E1y t\u00EDnh\\QuanLyBanHnagSieuThi\\QuanLyBanHnagSieuThi\\SupermarketApp\\Data\\Models\\SanPham.cs",
+              "RelativeToolTip": "Data\\Models\\SanPham.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAApAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-19T11:59:54.569Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 37,
+              "Title": "CTHoaDon.cs",
+              "DocumentMoniker": "C:\\Users\\ASUS\\OneDrive\\M\u00E1y t\u00EDnh\\QuanLyBanHnagSieuThi\\QuanLyBanHnagSieuThi\\SupermarketApp\\Data\\Models\\CTHoaDon.cs",
+              "RelativeDocumentMoniker": "Data\\Models\\CTHoaDon.cs",
+              "ToolTip": "C:\\Users\\ASUS\\OneDrive\\M\u00E1y t\u00EDnh\\QuanLyBanHnagSieuThi\\QuanLyBanHnagSieuThi\\SupermarketApp\\Data\\Models\\CTHoaDon.cs",
+              "RelativeToolTip": "Data\\Models\\CTHoaDon.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-19T12:22:17.57Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 38,
+              "Title": "App.config",
+              "DocumentMoniker": "C:\\Users\\ASUS\\OneDrive\\M\u00E1y t\u00EDnh\\QuanLyBanHnagSieuThi\\QuanLyBanHnagSieuThi\\SupermarketApp\\App.config",
+              "RelativeDocumentMoniker": "App.config",
+              "ToolTip": "C:\\Users\\ASUS\\OneDrive\\M\u00E1y t\u00EDnh\\QuanLyBanHnagSieuThi\\QuanLyBanHnagSieuThi\\SupermarketApp\\App.config",
+              "RelativeToolTip": "App.config",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAADQAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000601|",
+              "WhenOpened": "2025-10-16T07:45:17.211Z"
+            }
+          ]
+        },
+        {
+          "DockedHeight": 150,
+          "SelectedChildIndex": -1,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{d78612c7-9962-4b83-95d9-268046dad23a}"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

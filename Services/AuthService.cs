@@ -1,6 +1,7 @@
 using System;
 using System.Linq;
 using System.Security.Cryptography;
+using System.Text;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using SupermarketApp.Data;
@@ -26,8 +27,8 @@ namespace SupermarketApp.Services
             }
 
             // Hash password with salt using PBKDF2
-            // 50000 iterations for stronger security vs performance balance
-            using (var pbkdf2 = new Rfc2898DeriveBytes(password, salt, 50000, HashAlgorithmName.SHA256))
+            // 10000 iterations for good security vs performance balance
+            using (var pbkdf2 = new Rfc2898DeriveBytes(password, salt, 10000, HashAlgorithmName.SHA256))
             {
                 byte[] hash = pbkdf2.GetBytes(32); // 32 bytes = 256 bits
                 return (hash, salt);
@@ -43,12 +44,10 @@ namespace SupermarketApp.Services
             {
                 var nv = await db.NhanVien.FirstOrDefaultAsync(x => x.TaiKhoan == user && x.TrangThai);
                 if (nv == null || nv.MatKhauHash == null || nv.Salt == null) 
-                {
                     return false;
-                }
 
-                // Hash input password with stored salt (same iteration count as HashPassword)
-                using (var pbkdf2 = new Rfc2898DeriveBytes(pass, nv.Salt, 50000, HashAlgorithmName.SHA256))
+                // Hash input password with stored salt
+                using (var pbkdf2 = new Rfc2898DeriveBytes(pass, nv.Salt, 10000, HashAlgorithmName.SHA256))
                 {
                     byte[] hash = pbkdf2.GetBytes(32);
                     return nv.MatKhauHash.SequenceEqual(hash);

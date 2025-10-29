@@ -80,7 +80,8 @@ namespace SupermarketApp.Data
                 e.Property(x => x.TenKH).IsRequired().HasMaxLength(200);
                 e.Property(x => x.SDT).HasMaxLength(20);
                 e.Property(x => x.Email).HasMaxLength(100);
-                e.Property(x => x.LoaiKhachHang).HasMaxLength(100);
+                e.Property(x => x.DiaChi).HasMaxLength(500);
+                e.Property(x => x.LoaiKH).HasMaxLength(50).HasDefaultValue("Vãng lai");
             });
 
             // NhanVien Configuration

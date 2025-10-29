@@ -8,8 +8,7 @@ using SupermarketApp.Utils;
 using SupermarketApp.Data;
 using SupermarketApp.Data.Models;
 using SupermarketApp.Services;
-using Microsoft.EntityFrameworkCore;
- 
+
 namespace SupermarketApp.Forms
 {
     public partial class EmployeeForm : Form
@@ -45,18 +44,17 @@ namespace SupermarketApp.Forms
         {
             using (var db = new SupermarketContext())
             {
-                var data = await db.NhanVien
-                    .AsNoTracking()
-                    .OrderBy(x => x.MaNV)
-                    .Select(x => new {
-                        x.MaNV,
-                        x.TenNV,
-                        x.TaiKhoan,
-                        x.VaiTro,
+                var data = await Task.Run(()=> db.NhanVien
+                    .OrderBy(x=>x.MaNV)
+                    .Select(x=> new { 
+                        x.MaNV, 
+                        x.TenNV, 
+                        x.TaiKhoan, 
+                        x.VaiTro, 
                         TrangThai = x.TrangThai ? "Hoạt động" : "Vô hiệu",
                         x.NgayTao
                     })
-                    .ToListAsync();
+                    .ToList());
                 
                 dgvEmployees.DataSource = data;
                 
@@ -152,9 +150,7 @@ namespace SupermarketApp.Forms
                 {
                     // Check duplicate username
                     var username = txtUsername.Text.Trim();
-                    var exists = await db.NhanVien
-                        .AsNoTracking()
-                        .AnyAsync(x => x.TaiKhoan == username);
+                    var exists = await Task.Run(() => db.NhanVien.Any(x => x.TaiKhoan == username));
                     if (exists)
                     {
                         MessageHelper.ShowWarning("Tài khoản đã tồn tại!");
@@ -319,11 +315,11 @@ namespace SupermarketApp.Forms
 
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             this.pnlTop = new Sunny.UI.UIPanel();
             this.lblTitle = new Sunny.UI.UILabel();
             this.btnRefresh = new Sunny.UI.UIButton();
@@ -355,7 +351,7 @@ namespace SupermarketApp.Forms
             this.pnlTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlTop.FillColor = System.Drawing.Color.White;
             this.pnlTop.FillColor2 = System.Drawing.Color.White;
-            this.pnlTop.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.pnlTop.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.pnlTop.Location = new System.Drawing.Point(0, 0);
             this.pnlTop.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.pnlTop.MinimumSize = new System.Drawing.Size(1, 1);
@@ -368,7 +364,7 @@ namespace SupermarketApp.Forms
             // 
             // lblTitle
             // 
-            this.lblTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold);
+            this.lblTitle.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(130)))), ((int)(((byte)(246)))));
             this.lblTitle.Location = new System.Drawing.Point(20, 15);
             this.lblTitle.Name = "lblTitle";
@@ -383,7 +379,7 @@ namespace SupermarketApp.Forms
             this.btnRefresh.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(107)))), ((int)(((byte)(114)))), ((int)(((byte)(128)))));
             this.btnRefresh.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(85)))), ((int)(((byte)(99)))));
             this.btnRefresh.FillHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(85)))), ((int)(((byte)(99)))));
-            this.btnRefresh.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
+            this.btnRefresh.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.btnRefresh.Location = new System.Drawing.Point(1050, 17);
             this.btnRefresh.MinimumSize = new System.Drawing.Size(1, 1);
             this.btnRefresh.Name = "btnRefresh";
@@ -412,7 +408,7 @@ namespace SupermarketApp.Forms
             this.pnlForm.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlForm.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(244)))), ((int)(((byte)(246)))));
             this.pnlForm.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(244)))), ((int)(((byte)(246)))));
-            this.pnlForm.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.pnlForm.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.pnlForm.Location = new System.Drawing.Point(0, 70);
             this.pnlForm.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.pnlForm.MinimumSize = new System.Drawing.Size(1, 1);
@@ -426,11 +422,11 @@ namespace SupermarketApp.Forms
             // 
             // lblName
             // 
-            this.lblName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.lblName.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.lblName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
             this.lblName.Location = new System.Drawing.Point(20, 15);
             this.lblName.Name = "lblName";
-            this.lblName.Size = new System.Drawing.Size(85, 25);
+            this.lblName.Size = new System.Drawing.Size(120, 25);
             this.lblName.TabIndex = 0;
             this.lblName.Text = "Tên NV";
             this.lblName.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -438,7 +434,7 @@ namespace SupermarketApp.Forms
             // txtName
             // 
             this.txtName.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.txtName.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.txtName.Location = new System.Drawing.Point(20, 45);
             this.txtName.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtName.MinimumSize = new System.Drawing.Size(1, 16);
@@ -452,11 +448,11 @@ namespace SupermarketApp.Forms
             // 
             // lblUsername
             // 
-            this.lblUsername.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.lblUsername.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.lblUsername.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
             this.lblUsername.Location = new System.Drawing.Point(260, 15);
             this.lblUsername.Name = "lblUsername";
-            this.lblUsername.Size = new System.Drawing.Size(101, 25);
+            this.lblUsername.Size = new System.Drawing.Size(120, 25);
             this.lblUsername.TabIndex = 2;
             this.lblUsername.Text = "Tài khoản";
             this.lblUsername.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -464,7 +460,7 @@ namespace SupermarketApp.Forms
             // txtUsername
             // 
             this.txtUsername.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtUsername.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.txtUsername.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.txtUsername.Location = new System.Drawing.Point(260, 45);
             this.txtUsername.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtUsername.MinimumSize = new System.Drawing.Size(1, 16);
@@ -478,11 +474,11 @@ namespace SupermarketApp.Forms
             // 
             // lblPassword
             // 
-            this.lblPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.lblPassword.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.lblPassword.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
             this.lblPassword.Location = new System.Drawing.Point(460, 15);
             this.lblPassword.Name = "lblPassword";
-            this.lblPassword.Size = new System.Drawing.Size(96, 25);
+            this.lblPassword.Size = new System.Drawing.Size(120, 25);
             this.lblPassword.TabIndex = 4;
             this.lblPassword.Text = "Mật khẩu";
             this.lblPassword.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -490,7 +486,7 @@ namespace SupermarketApp.Forms
             // txtPassword
             // 
             this.txtPassword.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.txtPassword.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.txtPassword.Location = new System.Drawing.Point(460, 45);
             this.txtPassword.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtPassword.MinimumSize = new System.Drawing.Size(1, 16);
@@ -505,11 +501,11 @@ namespace SupermarketApp.Forms
             // 
             // lblRole
             // 
-            this.lblRole.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.lblRole.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.lblRole.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
             this.lblRole.Location = new System.Drawing.Point(660, 15);
             this.lblRole.Name = "lblRole";
-            this.lblRole.Size = new System.Drawing.Size(74, 25);
+            this.lblRole.Size = new System.Drawing.Size(120, 25);
             this.lblRole.TabIndex = 6;
             this.lblRole.Text = "Vai trò";
             this.lblRole.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -518,7 +514,7 @@ namespace SupermarketApp.Forms
             // 
             this.cbRole.DataSource = null;
             this.cbRole.FillColor = System.Drawing.Color.White;
-            this.cbRole.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.cbRole.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.cbRole.ItemHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(219)))), ((int)(((byte)(254)))));
             this.cbRole.Items.AddRange(new object[] {
             "Admin",
@@ -538,11 +534,11 @@ namespace SupermarketApp.Forms
             // 
             // lblStatus
             // 
-            this.lblStatus.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.lblStatus.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.lblStatus.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
             this.lblStatus.Location = new System.Drawing.Point(830, 15);
             this.lblStatus.Name = "lblStatus";
-            this.lblStatus.Size = new System.Drawing.Size(103, 25);
+            this.lblStatus.Size = new System.Drawing.Size(120, 25);
             this.lblStatus.TabIndex = 8;
             this.lblStatus.Text = "Trạng thái";
             this.lblStatus.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -551,7 +547,7 @@ namespace SupermarketApp.Forms
             // 
             this.cbStatus.DataSource = null;
             this.cbStatus.FillColor = System.Drawing.Color.White;
-            this.cbStatus.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.cbStatus.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.cbStatus.ItemHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(219)))), ((int)(((byte)(254)))));
             this.cbStatus.Items.AddRange(new object[] {
             "Hoạt động",
@@ -575,7 +571,7 @@ namespace SupermarketApp.Forms
             this.btnAdd.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(16)))), ((int)(((byte)(185)))), ((int)(((byte)(129)))));
             this.btnAdd.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(150)))), ((int)(((byte)(105)))));
             this.btnAdd.FillHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(150)))), ((int)(((byte)(105)))));
-            this.btnAdd.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
+            this.btnAdd.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.btnAdd.Location = new System.Drawing.Point(20, 95);
             this.btnAdd.MinimumSize = new System.Drawing.Size(1, 1);
             this.btnAdd.Name = "btnAdd";
@@ -591,7 +587,7 @@ namespace SupermarketApp.Forms
             this.btnUpdate.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(130)))), ((int)(((byte)(246)))));
             this.btnUpdate.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(99)))), ((int)(((byte)(235)))));
             this.btnUpdate.FillHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(99)))), ((int)(((byte)(235)))));
-            this.btnUpdate.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
+            this.btnUpdate.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.btnUpdate.Location = new System.Drawing.Point(155, 95);
             this.btnUpdate.MinimumSize = new System.Drawing.Size(1, 1);
             this.btnUpdate.Name = "btnUpdate";
@@ -607,7 +603,7 @@ namespace SupermarketApp.Forms
             this.btnResetPassword.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(158)))), ((int)(((byte)(11)))));
             this.btnResetPassword.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(119)))), ((int)(((byte)(6)))));
             this.btnResetPassword.FillHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(119)))), ((int)(((byte)(6)))));
-            this.btnResetPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
+            this.btnResetPassword.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.btnResetPassword.Location = new System.Drawing.Point(290, 95);
             this.btnResetPassword.MinimumSize = new System.Drawing.Size(1, 1);
             this.btnResetPassword.Name = "btnResetPassword";
@@ -623,7 +619,7 @@ namespace SupermarketApp.Forms
             this.btnClear.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(107)))), ((int)(((byte)(114)))), ((int)(((byte)(128)))));
             this.btnClear.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(85)))), ((int)(((byte)(99)))));
             this.btnClear.FillHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(85)))), ((int)(((byte)(99)))));
-            this.btnClear.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
+            this.btnClear.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.btnClear.Location = new System.Drawing.Point(455, 95);
             this.btnClear.MinimumSize = new System.Drawing.Size(1, 1);
             this.btnClear.Name = "btnClear";
@@ -638,51 +634,51 @@ namespace SupermarketApp.Forms
             this.dgvEmployees.AllowUserToAddRows = false;
             this.dgvEmployees.AllowUserToDeleteRows = false;
             this.dgvEmployees.AllowUserToResizeRows = false;
-            dataGridViewCellStyle6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(249)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.dgvEmployees.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(249)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dgvEmployees.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvEmployees.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvEmployees.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(249)))), ((int)(((byte)(255)))));
             this.dgvEmployees.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(130)))), ((int)(((byte)(246)))));
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
-            dataGridViewCellStyle7.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(130)))), ((int)(((byte)(246)))));
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvEmployees.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(130)))), ((int)(((byte)(246)))));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 10F);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(130)))), ((int)(((byte)(246)))));
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvEmployees.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dgvEmployees.ColumnHeadersHeight = 38;
             this.dgvEmployees.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle8.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            dataGridViewCellStyle8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(219)))), ((int)(((byte)(254)))));
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
-            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvEmployees.DefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 10F);
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(219)))), ((int)(((byte)(254)))));
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvEmployees.DefaultCellStyle = dataGridViewCellStyle3;
             this.dgvEmployees.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvEmployees.EnableHeadersVisualStyles = false;
-            this.dgvEmployees.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.dgvEmployees.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.dgvEmployees.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(219)))), ((int)(((byte)(254)))));
             this.dgvEmployees.Location = new System.Drawing.Point(0, 220);
             this.dgvEmployees.MultiSelect = false;
             this.dgvEmployees.Name = "dgvEmployees";
             this.dgvEmployees.ReadOnly = true;
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(249)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle9.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            dataGridViewCellStyle9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
-            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(130)))), ((int)(((byte)(246)))));
-            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvEmployees.RowHeadersDefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(249)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 10F);
+            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(130)))), ((int)(((byte)(246)))));
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvEmployees.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.dgvEmployees.RowHeadersVisible = false;
             this.dgvEmployees.RowHeadersWidth = 51;
-            dataGridViewCellStyle10.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle10.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.dgvEmployees.RowsDefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.dgvEmployees.RowsDefaultCellStyle = dataGridViewCellStyle5;
             this.dgvEmployees.RowTemplate.Height = 32;
             this.dgvEmployees.SelectedIndex = -1;
             this.dgvEmployees.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;

@@ -151,6 +151,8 @@ ThanhTien     COMPUTED (SoLuong * DonGiaBan)
 - Mật khẩu được mã hóa bằng **SHA256**
 - Database sử dụng **Entity Framework Core 3.1**
 - Hỗ trợ cả **Windows Authentication** và **SQL Server Authentication**
+- 🎯 **Hỗ trợ Unicode tiếng Việt:** Database dùng `NVARCHAR` cho tất cả cột tiếng Việt
+- 🔤 **Font chuẩn:** Toàn bộ form dùng font Segoe UI 10pt Unicode để hiển thị tiếng Việt chuẩn
 
 ## 💡 Tips
 

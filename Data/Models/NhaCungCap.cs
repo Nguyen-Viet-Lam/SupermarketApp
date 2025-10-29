@@ -14,7 +14,7 @@ namespace SupermarketApp.Data.Models
         public string NguoiLienHe { get; set; }
         public bool TrangThai { get; set; }
         public DateTime NgayTao { get; set; }
-        public string GhiChu { get; set; }
+        
 
         // Navigation Properties
         public virtual List<PhieuNhap> PhieuNhaps { get; set; } = new List<PhieuNhap>();

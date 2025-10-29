@@ -5,10 +5,9 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Sunny.UI;
-                    using SupermarketApp.Utils;
+using SupermarketApp.Utils;
 using SupermarketApp.Data;
 using SupermarketApp.Data.Models;
-using Microsoft.EntityFrameworkCore;
 
 namespace SupermarketApp.Forms
 {
@@ -61,11 +60,10 @@ namespace SupermarketApp.Forms
         {
             using (var db = new SupermarketContext())
             {
-                var suppliers = await db.NhaCungCap
-                    .AsNoTracking()
+                var suppliers = await Task.Run(() => db.NhaCungCap
                     .Where(x => x.TrangThai)
                     .Select(x => new { x.MaNCC, x.TenNCC })
-                    .ToListAsync();
+                    .ToList());
 
                 cbSupplier.DataSource = suppliers;
                 cbSupplier.DisplayMember = "TenNCC";
@@ -77,11 +75,10 @@ namespace SupermarketApp.Forms
         {
             using (var db = new SupermarketContext())
             {
-                var products = await db.SanPham
-                    .AsNoTracking()
+                var products = await Task.Run(() => db.SanPham
                     .Where(x => x.TrangThai)
                     .Select(x => new { x.MaSP, Display = x.TenSP + " - " + x.DonVi })
-                    .ToListAsync();
+                    .ToList());
 
                 cbProduct.DataSource = products;
                 cbProduct.DisplayMember = "Display";
@@ -341,7 +338,7 @@ namespace SupermarketApp.Forms
             this.pnlTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlTop.FillColor = System.Drawing.Color.White;
             this.pnlTop.FillColor2 = System.Drawing.Color.White;
-            this.pnlTop.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.pnlTop.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.pnlTop.Location = new System.Drawing.Point(0, 0);
             this.pnlTop.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.pnlTop.MinimumSize = new System.Drawing.Size(1, 1);
@@ -359,7 +356,7 @@ namespace SupermarketApp.Forms
             this.lblTitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(130)))), ((int)(((byte)(246)))));
             this.lblTitle.Location = new System.Drawing.Point(20, 15);
             this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(400, 35);
+            this.lblTitle.Size = new System.Drawing.Size(350, 35);
             this.lblTitle.TabIndex = 0;
             this.lblTitle.Text = "📦 LẬP PHIẾU NHẬP HÀNG";
             this.lblTitle.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -457,7 +454,7 @@ namespace SupermarketApp.Forms
             this.lblPrice.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
             this.lblPrice.Location = new System.Drawing.Point(800, 60);
             this.lblPrice.Name = "lblPrice";
-            this.lblPrice.Size = new System.Drawing.Size(81, 25);
+            this.lblPrice.Size = new System.Drawing.Size(120, 25);
             this.lblPrice.TabIndex = 7;
             this.lblPrice.Text = "Đơn giá nhập *";
             this.lblPrice.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -531,7 +528,7 @@ namespace SupermarketApp.Forms
             this.dgvCart.AllowUserToDeleteRows = false;
             this.dgvCart.AllowUserToResizeRows = false;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(249)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dgvCart.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvCart.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvCart.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(249)))), ((int)(((byte)(255)))));
@@ -573,7 +570,7 @@ namespace SupermarketApp.Forms
             this.dgvCart.RowHeadersVisible = false;
             this.dgvCart.RowHeadersWidth = 51;
             dataGridViewCellStyle5.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.dgvCart.RowsDefaultCellStyle = dataGridViewCellStyle5;
             this.dgvCart.RowTemplate.Height = 32;
             this.dgvCart.SelectedIndex = -1;
@@ -589,7 +586,7 @@ namespace SupermarketApp.Forms
             this.pnlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.pnlBottom.FillColor = System.Drawing.Color.White;
             this.pnlBottom.FillColor2 = System.Drawing.Color.White;
-            this.pnlBottom.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.pnlBottom.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.pnlBottom.Location = new System.Drawing.Point(0, 520);
             this.pnlBottom.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.pnlBottom.MinimumSize = new System.Drawing.Size(1, 1);

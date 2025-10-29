@@ -42,21 +42,7 @@ namespace SupermarketApp.Services
             {
                 var sp = await db.SanPham.FindAsync(maSP);
                 if (sp == null) return false;
-
-                // Nếu sản phẩm đã xuất hiện trong hóa đơn, chuyển sang "soft delete" (vô hiệu hóa) thay vì xóa cứng
-                var existsInInvoice = await db.CTHoaDon.AsNoTracking().AnyAsync(x => x.MaSP == maSP);
-                if (existsInInvoice)
-                {
-                    if (sp.TrangThai)
-                    {
-                        sp.TrangThai = false;
-                        db.SanPham.Update(sp);
-                        await db.SaveChangesAsync();
-                    }
-                    return true;
-                }
-
-                // Chưa từng bán: cho phép xóa cứng
+                // Nếu đã bán thì nên khóa thay vì xóa cứng; demo vẫn cho xóa
                 db.SanPham.Remove(sp);
                 return await db.SaveChangesAsync() > 0;
             }

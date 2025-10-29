@@ -1,11 +1,9 @@
 ﻿using Sunny.UI;
 using SupermarketApp.Forms;
 using SupermarketApp.Data;
-using SupermarketApp.Services;
 using System;
+using System.Drawing;
 using System.Windows.Forms;
-using System.Globalization;
-using System.Threading;
  
 namespace SupermarketApp
 {
@@ -17,20 +15,9 @@ namespace SupermarketApp
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            // Thiết lập ngôn ngữ (Culture) cho toàn ứng dụng.
-            // Mặc định vi-VN; có thể đổi bằng cách lưu cài đặt "UILanguage" (ví dụ: "en-US").
-            try
-            {
-                var svc = new SettingsService();
-                var lang = svc.GetSettingAsync("UILanguage").GetAwaiter().GetResult();
-                var cultureName = string.IsNullOrWhiteSpace(lang) ? "vi-VN" : lang.Trim();
-                var culture = new CultureInfo(cultureName);
-                Thread.CurrentThread.CurrentCulture = culture;
-                Thread.CurrentThread.CurrentUICulture = culture;
-                // Áp dụng cho Resources nếu cần
-                SupermarketApp.Properties.Resources.Culture = culture;
-            }
-            catch { }
+            // ⚠️ Font Unicode tiếng Việt sẽ được set trong từng form
+            // Segoe UI 10pt dùng cho toàn bộ controls
+            // Excel export now uses ClosedXML (no license setup required)
 
             // Sunny.UI: bỏ thiết lập UIStyleManager.Style để tránh lỗi CS0120 (thuộc tính không static trên phiên bản hiện tại).
             // Màu sắc giao diện đã được đặt trực tiếp trong các Form (header/sidebar, button).
@@ -42,15 +29,9 @@ namespace SupermarketApp
                 {
                     // Ensure admin account exists with secure password
                     DataSeederUpdate.SeedDefaultAdmin(db);
-
-                    // Ensure DB có cột 'LoaiKhachHang', backfill và seed 'Khách vãng lai'
-                    DataSeederUpdate.EnsureCustomerCategories(db);
-
-                    // Ensure CAIDAT contains 'CustomerCategories' setting for UI category options
-                    DataSeederUpdate.EnsureCustomerCategorySetting(db);
                     
-                    // Seed other sample data if needed
-                    // DataSeeder.SeedData();
+                    // Seed other sample data - CHỈ TẠO KHI KHÔNG CÓ DỮ LIỆU
+                    // DataSeeder.SeedData(); // ĐÃ TẮT - Không tự động seed
                 }
             }
             catch (Exception ex)

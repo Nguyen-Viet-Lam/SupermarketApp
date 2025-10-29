@@ -10,7 +10,6 @@ namespace SupermarketApp.Data.Models
         public int MaNV { get; set; }
         public int? MaKH { get; set; }
         public decimal TongTien { get; set; }
-        public string GhiChu { get; set; }
 
         // Navigation Properties
         public virtual NhanVien NhanVien { get; set; }

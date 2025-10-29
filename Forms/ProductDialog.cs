@@ -370,7 +370,7 @@ namespace SupermarketApp.Forms
             this.btnCancel.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(85)))), ((int)(((byte)(99)))));
             this.btnCancel.FillHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(85)))), ((int)(((byte)(99)))));
             this.btnCancel.FillPressColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(65)))), ((int)(((byte)(81)))));
-            this.btnCancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.btnCancel.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.btnCancel.Location = new System.Drawing.Point(460, 470);
             this.btnCancel.MinimumSize = new System.Drawing.Size(1, 1);
             this.btnCancel.Name = "btnCancel";

@@ -52,42 +52,45 @@ namespace SupermarketApp.Forms
                     var nhanVien = db.NhanVien.Find(hd.MaNV);
                     var khachHang = hd.MaKH.HasValue ? db.KhachHang.Find(hd.MaKH.Value) : null;
 
-                    // Tạo nội dung hóa đơn
+                    // Tạo nội dung hóa đơn - đơn giản, dễ đọc
                     var content = new System.Text.StringBuilder();
-                    content.AppendLine("╔════════════════════════════════════════════════╗");
-                    content.AppendLine("║          SIÊU THỊ MINIMART                     ║");
-                    content.AppendLine("║      Địa chỉ: 123 Đường ABC, TP.HCM            ║");
-                    content.AppendLine("║      Hotline: 0123 456 789                     ║");
-                    content.AppendLine("╠════════════════════════════════════════════════╣");
-                    content.AppendLine("║              HÓA ĐƠN BÁN HÀNG                  ║");
-                    content.AppendLine("╠════════════════════════════════════════════════╣");
-                    content.AppendLine($"  Mã HĐ: {hd.MaHD.ToString().PadRight(20)} Ngày: {hd.NgayLap:dd/MM/yyyy HH:mm}");
-                    content.AppendLine($"  Thu ngân: {nhanVien?.TenNV}");
+                    content.AppendLine("════════════════════════════════════════════════");
+                    content.AppendLine("         SIÊU THI MINIMART");
+                    content.AppendLine("    Dia chi: 123 Duong ABC, TP.HCM");
+                    content.AppendLine("    Hotline: 0123 456 789");
+                    content.AppendLine("════════════════════════════════════════════════");
+                    content.AppendLine("           HOA DON BAN HANG");
+                    content.AppendLine("════════════════════════════════════════════════");
+                    content.AppendLine();
+                    content.AppendLine($"Ma HD: {hd.MaHD}");
+                    content.AppendLine($"Ngay: {hd.NgayLap:dd/MM/yyyy HH:mm}");
+                    content.AppendLine($"Thu ngan: {nhanVien?.TenNV ?? "N/A"}");
                     if (khachHang != null)
                     {
-                        content.AppendLine($"  Khách hàng: {khachHang.TenKH}");
-                        content.AppendLine($"  SĐT: {khachHang.SDT}");
-                        content.AppendLine($"  Điểm tích lũy: {khachHang.DiemTichLuy}");
+                        content.AppendLine($"Khach hang: {khachHang.TenKH}");
+                        content.AppendLine($"SDT: {khachHang.SDT}");
+                        content.AppendLine($"Diem tich luy: {khachHang.DiemTichLuy}");
                     }
+                    content.AppendLine();
                     content.AppendLine("────────────────────────────────────────────────");
-                    content.AppendLine("  STT | Tên SP              | SL  | Đ.Giá    | T.Tiền");
+                    content.AppendLine("STT | Ten san pham       | SL  | Don gia | T.Tien");
                     content.AppendLine("────────────────────────────────────────────────");
 
                     int stt = 1;
                     foreach (var item in chiTiets)
                     {
                         string tenSP = item.TenSP.Length > 20 ? item.TenSP.Substring(0, 17) + "..." : item.TenSP.PadRight(20);
-                        content.AppendLine($"  {stt.ToString().PadLeft(2)}  | {tenSP} | {item.SoLuong.ToString().PadLeft(3)} | {item.DonGiaBan.ToString("N0").PadLeft(8)} | {item.ThanhTien.ToString("N0").PadLeft(10)}");
+                        content.AppendLine($"{stt.ToString().PadLeft(3)} | {tenSP} | {item.SoLuong.ToString().PadLeft(3)} | {item.DonGiaBan.ToString("N0").PadLeft(7)} | {item.ThanhTien.ToString("N0")}");
                         stt++;
                     }
 
                     content.AppendLine("────────────────────────────────────────────────");
-                    content.AppendLine($"                        TỔNG CỘNG: {hd.TongTien.ToString("N0").PadLeft(15)} VNĐ");
+                    content.AppendLine($"                TONG CONG: {hd.TongTien.ToString("N0")} VND");
                     content.AppendLine("────────────────────────────────────────────────");
                     content.AppendLine();
-                    content.AppendLine("        ★ CẢM ƠN QUÝ KHÁCH - HẸN GẶP LẠI! ★");
+                    content.AppendLine("    ★ CAM ON QUY KHACH - HEN GAP LAI! ★");
                     content.AppendLine();
-                    content.AppendLine("╚════════════════════════════════════════════════╝");
+                    content.AppendLine("════════════════════════════════════════════════");
 
                     invoiceContent = content.ToString();
                     txtContent.Text = invoiceContent;
@@ -123,15 +126,46 @@ namespace SupermarketApp.Forms
 
         private void PrintDoc_PrintPage(object sender, PrintPageEventArgs e)
         {
-            Font font = new Font("Courier New", 10);
+            // Sử dụng font hỗ trợ tiếng Việt tốt
+            Font titleFont = new Font("Arial", 16, FontStyle.Bold);
+            Font headerFont = new Font("Arial", 10, FontStyle.Bold);
+            Font contentFont = new Font("Arial", 9, FontStyle.Regular);
+            
             float yPos = 50;
             float leftMargin = 50;
+            float maxWidth = e.PageBounds.Width - 100;
             
-            foreach (string line in invoiceContent.Split('\n'))
+            string[] lines = invoiceContent.Split('\n');
+            
+            for (int i = 0; i < lines.Length; i++)
             {
-                e.Graphics.DrawString(line, font, Brushes.Black, leftMargin, yPos);
-                yPos += font.GetHeight(e.Graphics);
+                string line = lines[i];
+                Font currentFont = contentFont;
+                
+                // Xác định font phù hợp theo nội dung
+                if (line.Contains("SIÊU THỊ") || line.Contains("HÓA ĐƠN"))
+                {
+                    currentFont = titleFont;
+                }
+                else if (line.Contains("STT") || line.Contains("═══") || line.Contains("════"))
+                {
+                    currentFont = headerFont;
+                }
+                
+                // Vẽ text với TextRenderer để hỗ trợ Unicode tốt hơn
+                TextRenderer.DrawText(e.Graphics, line, currentFont, new Point((int)leftMargin, (int)yPos), Color.Black);
+                
+                yPos += currentFont.GetHeight(e.Graphics);
+                
+                // Kiểm tra nếu hết trang
+                if (yPos > e.PageBounds.Height - 50)
+                {
+                    e.HasMorePages = true;
+                    return;
+                }
             }
+            
+            e.HasMorePages = false;
         }
 
         private void BtnClose_Click(object sender, EventArgs e)
@@ -149,7 +183,7 @@ namespace SupermarketApp.Forms
             // txtContent
             // 
             this.txtContent.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtContent.Font = new System.Drawing.Font("Courier New", 10F);
+            this.txtContent.Font = new System.Drawing.Font("Arial", 10F);
             this.txtContent.Location = new System.Drawing.Point(20, 50);
             this.txtContent.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtContent.MinimumSize = new System.Drawing.Size(1, 16);

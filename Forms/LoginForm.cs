@@ -155,9 +155,9 @@ namespace SupermarketApp.Forms
             // 
             this.lblTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 22F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(236)))), ((int)(((byte)(72)))), ((int)(((byte)(153)))));
-            this.lblTitle.Location = new System.Drawing.Point(-3, 30);
+            this.lblTitle.Location = new System.Drawing.Point(13, 30);
             this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(483, 60);
+            this.lblTitle.Size = new System.Drawing.Size(467, 60);
             this.lblTitle.TabIndex = 0;
             this.lblTitle.Text = "ĐĂNG NHẬP HỆ THỐNG";
             this.lblTitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;

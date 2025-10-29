@@ -176,8 +176,7 @@ namespace SupermarketApp.Data
                             NgayLap = ngayLap,
                             MaNV = nhanVienId,
                             MaKH = khachHangId,
-                            TongTien = 0, // Sẽ tính sau
-                            GhiChu = i % 3 == 0 ? "Khách hàng VIP" : (i % 5 == 0 ? "Thanh toán bằng thẻ" : null)
+                            TongTien = 0 // Sẽ tính sau
                         };
 
                         db.HoaDon.Add(hoaDon);

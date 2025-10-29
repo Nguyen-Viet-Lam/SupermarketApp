@@ -1,5 +1,4 @@
 using System;
-using System.ComponentModel;
 using System.Drawing;
 using System.Linq;
 using System.Threading.Tasks;
@@ -8,7 +7,6 @@ using Sunny.UI;
 using SupermarketApp.Utils;
 using SupermarketApp.Data;
 using SupermarketApp.Data.Models;
-using Microsoft.EntityFrameworkCore;
 
 namespace SupermarketApp.Forms
 {
@@ -24,6 +22,7 @@ namespace SupermarketApp.Forms
         private UIButton btnRefresh;
         private UIButton btnViewDetail;
         private UIButton btnPrint;
+        private UIButton btnDelete;
         private UIDataGridView dgvInvoices;
         private UIPanel pnlStats;
         private UILabel lblTotalInvoices;
@@ -33,32 +32,27 @@ namespace SupermarketApp.Forms
         public InvoiceHistoryForm()
         {
             InitializeComponent();
-            if (LicenseManager.UsageMode != LicenseUsageMode.Designtime)
-                this.Load += async (s, e) => await LoadDataAsync();
+            this.Load += async (s, e) => await LoadDataAsync();
         }
 
         private async Task LoadDataAsync(DateTime? fromDate = null, DateTime? toDate = null)
         {
-            if (LicenseManager.UsageMode == LicenseUsageMode.Designtime) return;
             using (var db = new SupermarketContext())
             {
                 var query = db.HoaDon.AsQueryable();
 
                 if (fromDate.HasValue)
                 {
-                    var fromUtc = fromDate.Value.ToUniversalTime();
-                    query = query.Where(x => x.NgayLap >= fromUtc);
+                    query = query.Where(x => x.NgayLap >= fromDate.Value);
                 }
 
                 if (toDate.HasValue)
                 {
                     var endDate = toDate.Value.Date.AddDays(1);
-                    var endUtc = endDate.ToUniversalTime();
-                    query = query.Where(x => x.NgayLap < endUtc);
+                    query = query.Where(x => x.NgayLap < endDate);
                 }
 
-                var data = await query
-                    .AsNoTracking()
+                var data = await Task.Run(() => query
                     .OrderByDescending(x => x.NgayLap)
                     .Select(x => new
                     {
@@ -67,13 +61,11 @@ namespace SupermarketApp.Forms
                         NhanVien = x.NhanVien.TenNV,
                         KhachHang = x.MaKH.HasValue ? x.KhachHang.TenKH : "Khách lẻ",
                         x.TongTien,
-                        SoSanPham = x.ChiTiets.Count,
-                        x.GhiChu
+                        SoSanPham = x.ChiTiets.Count
                     })
-                    .ToListAsync();
+                    .ToList());
 
                 dgvInvoices.DataSource = data;
-                dgvInvoices.ClearSelection();
 
                 if (dgvInvoices.Columns.Count > 0)
                 {
@@ -91,8 +83,6 @@ namespace SupermarketApp.Forms
                     dgvInvoices.Columns["TongTien"].DefaultCellStyle.Format = "N0";
                     dgvInvoices.Columns["SoSanPham"].HeaderText = "Số SP";
                     dgvInvoices.Columns["SoSanPham"].Width = 80;
-                    dgvInvoices.Columns["GhiChu"].HeaderText = "Ghi chú";
-                    dgvInvoices.Columns["GhiChu"].Width = 200;
                 }
 
                 // Update stats
@@ -181,11 +171,6 @@ namespace SupermarketApp.Forms
                     message += $"\n════════════════════════════\n" +
                               $"TỔNG CỘNG: {invoice.TongTien:N0} VNĐ";
 
-                    if (!string.IsNullOrEmpty(invoice.GhiChu))
-                    {
-                        message += $"\n\nGhi chú: {invoice.GhiChu}";
-                    }
-
                     MessageHelper.Show(message, "Chi tiết hóa đơn");
                 }
             }
@@ -207,6 +192,46 @@ namespace SupermarketApp.Forms
             printDialog.ShowDialog();
         }
 
+        private async void BtnDelete_Click(object sender, EventArgs e)
+        {
+            if (selectedInvoiceId == null)
+            {
+                MessageHelper.ShowWarning("Vui lòng chọn hóa đơn cần xóa!");
+                return;
+            }
+
+            if (!MessageHelper.ShowAsk("⚠️ CẢNH BÁO! ⚠️\n\nBạn có chắc muốn xóa hóa đơn này?\nHành động này không thể hoàn tác!"))
+            {
+                return;
+            }
+
+            try
+            {
+                using (var db = new SupermarketContext())
+                {
+                    // Xóa chi tiết hóa đơn trước
+                    var chiTiets = db.CTHoaDon.Where(x => x.MaHD == selectedInvoiceId.Value).ToList();
+                    db.CTHoaDon.RemoveRange(chiTiets);
+                    await db.SaveChangesAsync();
+
+                    // Xóa hóa đơn
+                    var hoaDon = await db.HoaDon.FindAsync(selectedInvoiceId.Value);
+                    if (hoaDon != null)
+                    {
+                        db.HoaDon.Remove(hoaDon);
+                        await db.SaveChangesAsync();
+                    }
+
+                    MessageHelper.ShowSuccess("✅ Đã xóa hóa đơn thành công!");
+                    await LoadDataAsync();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageHelper.ShowError("❌ Lỗi khi xóa: " + ex.Message);
+            }
+        }
+
         private void InitializeComponent()
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -224,6 +249,7 @@ namespace SupermarketApp.Forms
             this.btnRefresh = new Sunny.UI.UIButton();
             this.btnViewDetail = new Sunny.UI.UIButton();
             this.btnPrint = new Sunny.UI.UIButton();
+            this.btnDelete = new Sunny.UI.UIButton();
             this.dgvInvoices = new Sunny.UI.UIDataGridView();
             this.pnlStats = new Sunny.UI.UIPanel();
             this.lblTotalInvoices = new Sunny.UI.UILabel();
@@ -244,6 +270,7 @@ namespace SupermarketApp.Forms
             this.pnlTop.Controls.Add(this.btnRefresh);
             this.pnlTop.Controls.Add(this.btnViewDetail);
             this.pnlTop.Controls.Add(this.btnPrint);
+            this.pnlTop.Controls.Add(this.btnDelete);
             this.pnlTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlTop.FillColor = System.Drawing.Color.White;
             this.pnlTop.FillColor2 = System.Drawing.Color.White;
@@ -265,14 +292,14 @@ namespace SupermarketApp.Forms
             this.lblTitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(130)))), ((int)(((byte)(246)))));
             this.lblTitle.Location = new System.Drawing.Point(20, 15);
             this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(319, 35);
+            this.lblTitle.Size = new System.Drawing.Size(350, 35);
             this.lblTitle.TabIndex = 0;
             this.lblTitle.Text = "📜 LỊCH SỬ HÓA ĐƠN";
             this.lblTitle.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // lblFromDate
             // 
-            this.lblFromDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.lblFromDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
             this.lblFromDate.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
             this.lblFromDate.Location = new System.Drawing.Point(20, 60);
             this.lblFromDate.Name = "lblFromDate";
@@ -283,7 +310,7 @@ namespace SupermarketApp.Forms
             // 
             // dtpFromDate
             // 
-            this.dtpFromDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.dtpFromDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
             this.dtpFromDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dtpFromDate.Location = new System.Drawing.Point(120, 60);
             this.dtpFromDate.Name = "dtpFromDate";
@@ -293,7 +320,7 @@ namespace SupermarketApp.Forms
             // 
             // lblToDate
             // 
-            this.lblToDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.lblToDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
             this.lblToDate.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
             this.lblToDate.Location = new System.Drawing.Point(320, 60);
             this.lblToDate.Name = "lblToDate";
@@ -304,7 +331,7 @@ namespace SupermarketApp.Forms
             // 
             // dtpToDate
             // 
-            this.dtpToDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.dtpToDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
             this.dtpToDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dtpToDate.Location = new System.Drawing.Point(420, 60);
             this.dtpToDate.Name = "dtpToDate";
@@ -319,7 +346,7 @@ namespace SupermarketApp.Forms
             this.btnSearch.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(99)))), ((int)(((byte)(235)))));
             this.btnSearch.FillHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(99)))), ((int)(((byte)(235)))));
             this.btnSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold);
-            this.btnSearch.Location = new System.Drawing.Point(620, 60);
+            this.btnSearch.Location = new System.Drawing.Point(606, 60);
             this.btnSearch.MinimumSize = new System.Drawing.Size(1, 1);
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Size = new System.Drawing.Size(120, 35);
@@ -334,8 +361,8 @@ namespace SupermarketApp.Forms
             this.btnRefresh.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(107)))), ((int)(((byte)(114)))), ((int)(((byte)(128)))));
             this.btnRefresh.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(85)))), ((int)(((byte)(99)))));
             this.btnRefresh.FillHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(85)))), ((int)(((byte)(99)))));
-            this.btnRefresh.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.btnRefresh.Location = new System.Drawing.Point(755, 60);
+            this.btnRefresh.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
+            this.btnRefresh.Location = new System.Drawing.Point(732, 60);
             this.btnRefresh.MinimumSize = new System.Drawing.Size(1, 1);
             this.btnRefresh.Name = "btnRefresh";
             this.btnRefresh.Size = new System.Drawing.Size(130, 35);
@@ -350,8 +377,8 @@ namespace SupermarketApp.Forms
             this.btnViewDetail.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(16)))), ((int)(((byte)(185)))), ((int)(((byte)(129)))));
             this.btnViewDetail.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(150)))), ((int)(((byte)(105)))));
             this.btnViewDetail.FillHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(150)))), ((int)(((byte)(105)))));
-            this.btnViewDetail.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.btnViewDetail.Location = new System.Drawing.Point(905, 60);
+            this.btnViewDetail.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
+            this.btnViewDetail.Location = new System.Drawing.Point(868, 60);
             this.btnViewDetail.MinimumSize = new System.Drawing.Size(1, 1);
             this.btnViewDetail.Name = "btnViewDetail";
             this.btnViewDetail.Size = new System.Drawing.Size(130, 35);
@@ -366,8 +393,8 @@ namespace SupermarketApp.Forms
             this.btnPrint.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(139)))), ((int)(((byte)(92)))), ((int)(((byte)(246)))));
             this.btnPrint.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(124)))), ((int)(((byte)(58)))), ((int)(((byte)(237)))));
             this.btnPrint.FillHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(124)))), ((int)(((byte)(58)))), ((int)(((byte)(237)))));
-            this.btnPrint.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.btnPrint.Location = new System.Drawing.Point(1050, 60);
+            this.btnPrint.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
+            this.btnPrint.Location = new System.Drawing.Point(1004, 60);
             this.btnPrint.MinimumSize = new System.Drawing.Size(1, 1);
             this.btnPrint.Name = "btnPrint";
             this.btnPrint.Size = new System.Drawing.Size(130, 35);
@@ -376,20 +403,37 @@ namespace SupermarketApp.Forms
             this.btnPrint.TipsFont = new System.Drawing.Font("Microsoft Sans Serif", 9F);
             this.btnPrint.Click += new System.EventHandler(this.BtnPrint_Click);
             // 
+            // btnDelete
+            // 
+            this.btnDelete.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnDelete.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
+            this.btnDelete.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(38)))), ((int)(((byte)(38)))));
+            this.btnDelete.FillHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(38)))), ((int)(((byte)(38)))));
+            this.btnDelete.FillPressColor = System.Drawing.Color.FromArgb(((int)(((byte)(185)))), ((int)(((byte)(28)))), ((int)(((byte)(28)))));
+            this.btnDelete.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold);
+            this.btnDelete.Location = new System.Drawing.Point(1140, 60);
+            this.btnDelete.MinimumSize = new System.Drawing.Size(1, 1);
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.Size = new System.Drawing.Size(87, 35);
+            this.btnDelete.TabIndex = 9;
+            this.btnDelete.Text = "🗑️ Xóa";
+            this.btnDelete.TipsFont = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            this.btnDelete.Click += new System.EventHandler(this.BtnDelete_Click);
+            // 
             // dgvInvoices
             // 
             this.dgvInvoices.AllowUserToAddRows = false;
             this.dgvInvoices.AllowUserToDeleteRows = false;
             this.dgvInvoices.AllowUserToResizeRows = false;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(249)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.dgvInvoices.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvInvoices.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvInvoices.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(249)))), ((int)(((byte)(255)))));
             this.dgvInvoices.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(130)))), ((int)(((byte)(246)))));
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
             dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(130)))), ((int)(((byte)(246)))));
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
@@ -399,7 +443,7 @@ namespace SupermarketApp.Forms
             this.dgvInvoices.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
             dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(219)))), ((int)(((byte)(254)))));
             dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
@@ -407,7 +451,7 @@ namespace SupermarketApp.Forms
             this.dgvInvoices.DefaultCellStyle = dataGridViewCellStyle3;
             this.dgvInvoices.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvInvoices.EnableHeadersVisualStyles = false;
-            this.dgvInvoices.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.dgvInvoices.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.dgvInvoices.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(219)))), ((int)(((byte)(254)))));
             this.dgvInvoices.Location = new System.Drawing.Point(0, 120);
             this.dgvInvoices.MultiSelect = false;
@@ -415,7 +459,7 @@ namespace SupermarketApp.Forms
             this.dgvInvoices.ReadOnly = true;
             dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(249)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             dataGridViewCellStyle4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
             dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(130)))), ((int)(((byte)(246)))));
             dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.White;
@@ -458,7 +502,7 @@ namespace SupermarketApp.Forms
             this.lblTotalInvoices.ForeColor = System.Drawing.Color.Black;
             this.lblTotalInvoices.Location = new System.Drawing.Point(20, 12);
             this.lblTotalInvoices.Name = "lblTotalInvoices";
-            this.lblTotalInvoices.Size = new System.Drawing.Size(178, 26);
+            this.lblTotalInvoices.Size = new System.Drawing.Size(300, 26);
             this.lblTotalInvoices.TabIndex = 0;
             this.lblTotalInvoices.Text = "Tổng số HĐ: 0";
             this.lblTotalInvoices.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -467,9 +511,9 @@ namespace SupermarketApp.Forms
             // 
             this.lblTotalRevenue.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
             this.lblTotalRevenue.ForeColor = System.Drawing.Color.Black;
-            this.lblTotalRevenue.Location = new System.Drawing.Point(929, 12);
+            this.lblTotalRevenue.Location = new System.Drawing.Point(700, 12);
             this.lblTotalRevenue.Name = "lblTotalRevenue";
-            this.lblTotalRevenue.Size = new System.Drawing.Size(251, 26);
+            this.lblTotalRevenue.Size = new System.Drawing.Size(480, 26);
             this.lblTotalRevenue.TabIndex = 1;
             this.lblTotalRevenue.Text = "Tổng doanh thu: 0 VNĐ";
             this.lblTotalRevenue.TextAlign = System.Drawing.ContentAlignment.MiddleRight;

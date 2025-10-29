@@ -7,8 +7,7 @@ using Sunny.UI;
 using SupermarketApp.Utils;
 using SupermarketApp.Data;
 using SupermarketApp.Data.Models;
-using Microsoft.EntityFrameworkCore;
- 
+
 namespace SupermarketApp.Forms
 {
     public partial class SupplierForm : Form
@@ -46,21 +45,20 @@ namespace SupermarketApp.Forms
         {
             using (var db = new SupermarketContext())
             {
-                var data = await db.NhaCungCap
-                    .AsNoTracking()
-                    .OrderBy(x => x.MaNCC)
-                    .Select(x => new {
-                        x.MaNCC,
-                        x.TenNCC,
-                        x.DiaChi,
-                        x.SDT,
+                var data = await Task.Run(()=> db.NhaCungCap
+                    .OrderBy(x=>x.MaNCC)
+                    .Select(x=> new { 
+                        x.MaNCC, 
+                        x.TenNCC, 
+                        x.DiaChi, 
+                        x.SDT, 
                         x.Email,
                         x.MaSoThue,
                         x.NguoiLienHe,
                         TrangThai = x.TrangThai ? "Hoạt động" : "Ngừng",
                         x.NgayTao
                     })
-                    .ToListAsync();
+                    .ToList());
                 
                 dgvSuppliers.DataSource = data;
                 
@@ -271,9 +269,7 @@ namespace SupermarketApp.Forms
                     }
 
                     // Kiểm tra xem đã có phiếu nhập chưa
-                    var existsInPhieuNhap = await db.PhieuNhap
-                        .AsNoTracking()
-                        .AnyAsync(x => x.MaNCC == selectedId.Value);
+                    var existsInPhieuNhap = await Task.Run(() => db.PhieuNhap.Any(x => x.MaNCC == selectedId.Value));
                     if (existsInPhieuNhap)
                     {
                         MessageHelper.ShowWarning("Không thể xóa! Nhà cung cấp đã có phiếu nhập hàng.\n\nBạn có thể vô hiệu hóa nhà cung cấp thay vì xóa.");
@@ -383,7 +379,7 @@ namespace SupermarketApp.Forms
             this.btnRefresh.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(107)))), ((int)(((byte)(114)))), ((int)(((byte)(128)))));
             this.btnRefresh.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(85)))), ((int)(((byte)(99)))));
             this.btnRefresh.FillHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(85)))), ((int)(((byte)(99)))));
-            this.btnRefresh.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.btnRefresh.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
             this.btnRefresh.Location = new System.Drawing.Point(1050, 17);
             this.btnRefresh.MinimumSize = new System.Drawing.Size(1, 1);
             this.btnRefresh.Name = "btnRefresh";
@@ -428,7 +424,7 @@ namespace SupermarketApp.Forms
             // 
             // lblName
             // 
-            this.lblName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.lblName.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
             this.lblName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
             this.lblName.Location = new System.Drawing.Point(20, 15);
             this.lblName.Name = "lblName";
@@ -440,7 +436,7 @@ namespace SupermarketApp.Forms
             // txtName
             // 
             this.txtName.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.txtName.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
             this.txtName.Location = new System.Drawing.Point(20, 45);
             this.txtName.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtName.MinimumSize = new System.Drawing.Size(1, 16);
@@ -454,7 +450,7 @@ namespace SupermarketApp.Forms
             // 
             // lblAddress
             // 
-            this.lblAddress.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.lblAddress.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
             this.lblAddress.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
             this.lblAddress.Location = new System.Drawing.Point(290, 15);
             this.lblAddress.Name = "lblAddress";
@@ -466,7 +462,7 @@ namespace SupermarketApp.Forms
             // txtAddress
             // 
             this.txtAddress.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtAddress.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.txtAddress.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
             this.txtAddress.Location = new System.Drawing.Point(290, 45);
             this.txtAddress.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtAddress.MinimumSize = new System.Drawing.Size(1, 16);
@@ -480,7 +476,7 @@ namespace SupermarketApp.Forms
             // 
             // lblPhone
             // 
-            this.lblPhone.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.lblPhone.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
             this.lblPhone.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
             this.lblPhone.Location = new System.Drawing.Point(610, 15);
             this.lblPhone.Name = "lblPhone";
@@ -492,7 +488,7 @@ namespace SupermarketApp.Forms
             // txtPhone
             // 
             this.txtPhone.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtPhone.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.txtPhone.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
             this.txtPhone.Location = new System.Drawing.Point(610, 45);
             this.txtPhone.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtPhone.MinimumSize = new System.Drawing.Size(1, 16);
@@ -506,7 +502,7 @@ namespace SupermarketApp.Forms
             // 
             // lblEmail
             // 
-            this.lblEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.lblEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
             this.lblEmail.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
             this.lblEmail.Location = new System.Drawing.Point(780, 15);
             this.lblEmail.Name = "lblEmail";
@@ -518,7 +514,7 @@ namespace SupermarketApp.Forms
             // txtEmail
             // 
             this.txtEmail.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.txtEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
             this.txtEmail.Location = new System.Drawing.Point(780, 45);
             this.txtEmail.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtEmail.MinimumSize = new System.Drawing.Size(1, 16);
@@ -532,7 +528,7 @@ namespace SupermarketApp.Forms
             // 
             // lblTaxCode
             // 
-            this.lblTaxCode.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.lblTaxCode.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
             this.lblTaxCode.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
             this.lblTaxCode.Location = new System.Drawing.Point(1000, 15);
             this.lblTaxCode.Name = "lblTaxCode";
@@ -544,7 +540,7 @@ namespace SupermarketApp.Forms
             // txtTaxCode
             // 
             this.txtTaxCode.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtTaxCode.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.txtTaxCode.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
             this.txtTaxCode.Location = new System.Drawing.Point(1000, 45);
             this.txtTaxCode.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtTaxCode.MinimumSize = new System.Drawing.Size(1, 16);
@@ -558,7 +554,7 @@ namespace SupermarketApp.Forms
             // 
             // lblContact
             // 
-            this.lblContact.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.lblContact.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
             this.lblContact.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
             this.lblContact.Location = new System.Drawing.Point(42, 93);
             this.lblContact.Name = "lblContact";
@@ -570,7 +566,7 @@ namespace SupermarketApp.Forms
             // txtContact
             // 
             this.txtContact.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtContact.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.txtContact.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
             this.txtContact.Location = new System.Drawing.Point(213, 93);
             this.txtContact.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtContact.MinimumSize = new System.Drawing.Size(1, 16);
@@ -589,7 +585,7 @@ namespace SupermarketApp.Forms
             this.btnAdd.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(150)))), ((int)(((byte)(105)))));
             this.btnAdd.FillHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(150)))), ((int)(((byte)(105)))));
             this.btnAdd.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold);
-            this.btnAdd.Location = new System.Drawing.Point(517, 88);
+            this.btnAdd.Location = new System.Drawing.Point(480, 90);
             this.btnAdd.MinimumSize = new System.Drawing.Size(1, 1);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(110, 38);
@@ -605,7 +601,7 @@ namespace SupermarketApp.Forms
             this.btnUpdate.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(99)))), ((int)(((byte)(235)))));
             this.btnUpdate.FillHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(99)))), ((int)(((byte)(235)))));
             this.btnUpdate.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold);
-            this.btnUpdate.Location = new System.Drawing.Point(650, 88);
+            this.btnUpdate.Location = new System.Drawing.Point(596, 90);
             this.btnUpdate.MinimumSize = new System.Drawing.Size(1, 1);
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Size = new System.Drawing.Size(110, 38);
@@ -621,7 +617,7 @@ namespace SupermarketApp.Forms
             this.btnDelete.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(38)))), ((int)(((byte)(38)))));
             this.btnDelete.FillHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(38)))), ((int)(((byte)(38)))));
             this.btnDelete.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold);
-            this.btnDelete.Location = new System.Drawing.Point(784, 88);
+            this.btnDelete.Location = new System.Drawing.Point(712, 90);
             this.btnDelete.MinimumSize = new System.Drawing.Size(1, 1);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(110, 38);
@@ -636,8 +632,8 @@ namespace SupermarketApp.Forms
             this.btnClear.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(107)))), ((int)(((byte)(114)))), ((int)(((byte)(128)))));
             this.btnClear.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(85)))), ((int)(((byte)(99)))));
             this.btnClear.FillHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(85)))), ((int)(((byte)(99)))));
-            this.btnClear.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.btnClear.Location = new System.Drawing.Point(914, 88);
+            this.btnClear.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
+            this.btnClear.Location = new System.Drawing.Point(828, 90);
             this.btnClear.MinimumSize = new System.Drawing.Size(1, 1);
             this.btnClear.Name = "btnClear";
             this.btnClear.Size = new System.Drawing.Size(120, 38);
@@ -652,14 +648,14 @@ namespace SupermarketApp.Forms
             this.dgvSuppliers.AllowUserToDeleteRows = false;
             this.dgvSuppliers.AllowUserToResizeRows = false;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(249)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dgvSuppliers.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvSuppliers.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvSuppliers.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(249)))), ((int)(((byte)(255)))));
             this.dgvSuppliers.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(130)))), ((int)(((byte)(246)))));
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
             dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(130)))), ((int)(((byte)(246)))));
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
@@ -669,7 +665,7 @@ namespace SupermarketApp.Forms
             this.dgvSuppliers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
             dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(219)))), ((int)(((byte)(254)))));
             dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
@@ -677,7 +673,7 @@ namespace SupermarketApp.Forms
             this.dgvSuppliers.DefaultCellStyle = dataGridViewCellStyle3;
             this.dgvSuppliers.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvSuppliers.EnableHeadersVisualStyles = false;
-            this.dgvSuppliers.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.dgvSuppliers.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.dgvSuppliers.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(219)))), ((int)(((byte)(254)))));
             this.dgvSuppliers.Location = new System.Drawing.Point(0, 220);
             this.dgvSuppliers.MultiSelect = false;
@@ -685,7 +681,7 @@ namespace SupermarketApp.Forms
             this.dgvSuppliers.ReadOnly = true;
             dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(249)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             dataGridViewCellStyle4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
             dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(130)))), ((int)(((byte)(246)))));
             dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.White;

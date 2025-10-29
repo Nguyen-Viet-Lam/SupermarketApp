@@ -1,12 +1,10 @@
 using System;
-using System.ComponentModel;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Sunny.UI;
-using Microsoft.EntityFrameworkCore;
 using SupermarketApp.Utils;
 using SupermarketApp.Data;
 using SupermarketApp.Data.Models;
@@ -22,13 +20,15 @@ namespace SupermarketApp.Forms
         private UILabel lblProduct;
         private UILabel lblQuantity;
         private UIComboBox cbProduct;
-        private UIComboBox cbCustomer;
-        private UIButton btnAddCustomer;
-        private UILabel lblCustomer;
         private UIIntegerUpDown numQty;
         private UIButton btnAddToCart;
         private UIButton btnRemove;
         private UIButton btnClear;
+        private UILabel lblCustomerType;
+        private UIButton btnVangLai;
+        private UIButton btnThanThiet;
+        private UIButton btnAddCustomer;
+        private UILabel lblSelectedCustomer;
         private UIDataGridView dgvCart;
         private UILabel lblTotal;
         private UILabel lblTotalValue;
@@ -39,62 +39,40 @@ namespace SupermarketApp.Forms
         private UIButton btnSave;
         private readonly List<InvoiceService.InvoiceItemDto> cart = new List<InvoiceService.InvoiceItemDto>();
         private List<SanPham> products;
-        private List<KhachHang> customers;
 
         public int MaNVCurrent { get; set; } = 1; 
-        public int? MaKHCurrent { get; set; } = null; 
+        public int? MaKHCurrent { get; set; } = null;
+        private string selectedCustomerType = "Vãng lai";
+        private string selectedCustomerName = ""; 
 
         public InvoiceForm()
         {
             InitializeComponent();
             this.Load += async (s,e)=> await InitAsync();
+            
+            // Set default selection
+            UpdateCustomerTypeSelection("Vãng lai");
         }
 
         private async Task InitAsync()
         {
-            if (LicenseManager.UsageMode == LicenseUsageMode.Designtime) return;
             using (var db = new SupermarketContext())
             {
-                products = await db.SanPham
-                    .AsNoTracking()
+                products = await Task.Run(() => db.SanPham
                     .Where(x => x.SoLuong > 0)
                     .OrderBy(x => x.TenSP)
-                    .ToListAsync();
-
-                customers = await db.KhachHang
-                    .AsNoTracking()
-                    .OrderBy(x => x.TenKH)
-                    .ToListAsync();
+                    .ToList());
             }
             
-            // Bind sản phẩm
             cbProduct.Items.Clear();
             cbProduct.DataSource = null;
-            var displayList = products.Select(p =>
+            
+            var displayList = products.Select(p => 
                 $"{p.TenSP} - Giá: {p.DonGia:N0} - Tồn: {p.SoLuong}"
             ).ToList();
+            
             cbProduct.DataSource = displayList;
             cbProduct.SelectedIndex = products.Count > 0 ? 0 : -1;
-
-            // Bind khách hàng
-            cbCustomer.Items.Clear();
-            cbCustomer.DataSource = null;
-            var customerDisplay = customers.Select(c =>
-                string.IsNullOrWhiteSpace(c.SDT) ? $"{c.TenKH}" : $"{c.TenKH} - {c.SDT}"
-            ).ToList();
-            cbCustomer.DataSource = customerDisplay;
-            cbCustomer.SelectedIndex = -1; // mặc định không chọn khách
-            MaKHCurrent = null;
-
-            // Gán sự kiện chọn khách để cập nhật MaKHCurrent
-            cbCustomer.SelectedIndexChanged += (s2, e2) =>
-            {
-                if (cbCustomer.SelectedIndex >= 0 && customers != null && cbCustomer.SelectedIndex < customers.Count)
-                    MaKHCurrent = customers[cbCustomer.SelectedIndex].MaKH;
-                else
-                    MaKHCurrent = null;
-            };
-
             BindCart();
         }
 
@@ -174,6 +152,183 @@ namespace SupermarketApp.Forms
                 cart.Clear();
                 BindCart();
                 MessageHelper.ShowTipSuccess("Đã xóa tất cả!");
+            }
+        }
+
+        private void BtnVangLai_Click(object sender, EventArgs e)
+        {
+            UpdateCustomerTypeSelection("Vãng lai", null, "");
+            MessageHelper.ShowTipSuccess("Đã chọn: Khách vãng lai");
+        }
+
+        private void BtnThanThiet_Click(object sender, EventArgs e)
+        {
+            UpdateCustomerTypeSelection("Thân quen", null, "");
+            MessageHelper.ShowTipSuccess("Đã chọn: Khách thân thiết");
+        }
+
+        private void UpdateCustomerTypeSelection(string type, int? maKH = null, string tenKH = "")
+        {
+            selectedCustomerType = type;
+            MaKHCurrent = maKH;
+            selectedCustomerName = tenKH;
+            
+            // Update customer info label
+            if (lblSelectedCustomer != null)
+            {
+                if (maKH.HasValue && !string.IsNullOrWhiteSpace(tenKH))
+                {
+                    lblSelectedCustomer.Text = $"KH: {tenKH} ({type})";
+                    lblSelectedCustomer.ForeColor = Color.FromArgb(34, 197, 94);
+                }
+                else
+                {
+                    lblSelectedCustomer.Text = $"Loại: {type}";
+                    lblSelectedCustomer.ForeColor = Color.FromArgb(107, 114, 128);
+                }
+            }
+            
+            // Reset all buttons to default style
+            if (btnVangLai != null)
+            {
+                btnVangLai.FillColor = Color.FromArgb(229, 231, 235);
+                btnVangLai.ForeColor = Color.FromArgb(75, 85, 99);
+            }
+            if (btnThanThiet != null)
+            {
+                btnThanThiet.FillColor = Color.FromArgb(229, 231, 235);
+                btnThanThiet.ForeColor = Color.FromArgb(75, 85, 99);
+            }
+            
+            // Highlight selected button
+            UIButton selectedBtn = null;
+            Color activeColor = Color.FromArgb(59, 130, 246);
+            
+            if (type == "Vãng lai" && btnVangLai != null)
+            {
+                selectedBtn = btnVangLai;
+            }
+            else if (type == "Thân quen" && btnThanThiet != null)
+            {
+                selectedBtn = btnThanThiet;
+                activeColor = Color.FromArgb(139, 92, 246);
+            }
+            
+            if (selectedBtn != null)
+            {
+                selectedBtn.FillColor = activeColor;
+                selectedBtn.ForeColor = Color.White;
+            }
+        }
+
+        private async void BtnAddCustomer_Click(object sender, EventArgs e)
+        {
+            var inputForm = new Form
+            {
+                Text = "Thêm khách hàng mới",
+                Size = new Size(450, 350),
+                StartPosition = FormStartPosition.CenterParent,
+                FormBorderStyle = FormBorderStyle.FixedDialog,
+                MaximizeBox = false,
+                MinimizeBox = false,
+                BackColor = Color.White
+            };
+            
+            var lblName = new Label { Text = "Tên khách hàng:", Left = 20, Top = 20, Width = 120 };
+            var txtName = new TextBox { Left = 150, Top = 18, Width = 250 };
+            
+            var lblPhone = new Label { Text = "Số điện thoại:", Left = 20, Top = 60, Width = 120 };
+            var txtPhone = new TextBox { Left = 150, Top = 58, Width = 250 };
+            
+            var lblEmail = new Label { Text = "Email:", Left = 20, Top = 100, Width = 120 };
+            var txtEmail = new TextBox { Left = 150, Top = 98, Width = 250 };
+            
+            var lblAddress = new Label { Text = "Địa chỉ:", Left = 20, Top = 140, Width = 120 };
+            var txtAddress = new TextBox { Left = 150, Top = 138, Width = 250, Height = 60, Multiline = true };
+            
+            var lblType = new Label { Text = "Loại khách hàng:", Left = 20, Top = 210, Width = 120 };
+            var cmbType = new ComboBox 
+            { 
+                Left = 150, 
+                Top = 208, 
+                Width = 250,
+                DropDownStyle = ComboBoxStyle.DropDownList
+            };
+            cmbType.Items.AddRange(new object[] { "Vãng lai", "Thân quen" });
+            cmbType.SelectedIndex = 0;
+            
+            var btnOK = new Button { Text = "Thêm", Left = 150, Top = 250, Width = 120, DialogResult = DialogResult.OK };
+            var btnCancel = new Button { Text = "Hủy", Left = 280, Top = 250, Width = 120, DialogResult = DialogResult.Cancel };
+            
+            btnOK.BackColor = Color.FromArgb(34, 197, 94);
+            btnOK.ForeColor = Color.White;
+            btnOK.FlatStyle = FlatStyle.Flat;
+            btnOK.FlatAppearance.BorderSize = 0;
+            
+            btnCancel.BackColor = Color.FromArgb(107, 114, 128);
+            btnCancel.ForeColor = Color.White;
+            btnCancel.FlatStyle = FlatStyle.Flat;
+            btnCancel.FlatAppearance.BorderSize = 0;
+            
+            inputForm.Controls.AddRange(new Control[] { lblName, txtName, lblPhone, txtPhone, lblEmail, txtEmail, lblAddress, txtAddress, lblType, cmbType, btnOK, btnCancel });
+            inputForm.AcceptButton = btnOK;
+            inputForm.CancelButton = btnCancel;
+            
+            if (inputForm.ShowDialog() == DialogResult.OK)
+            {
+                if (string.IsNullOrWhiteSpace(txtName.Text))
+                {
+                    MessageHelper.ShowWarning("Vui lòng nhập tên khách hàng!");
+                    return;
+                }
+                
+                try
+                {
+                    using (var db = new SupermarketContext())
+                    {
+                        string phone = txtPhone.Text.Trim();
+                        if (!string.IsNullOrWhiteSpace(phone))
+                        {
+                            var existingCustomer = db.KhachHang.FirstOrDefault(x => x.SDT == phone);
+                            if (existingCustomer != null)
+                            {
+                                if (MessageHelper.ShowAsk($"Số điện thoại này đã tồn tại cho khách hàng: {existingCustomer.TenKH}\n\nBạn có muốn chọn khách hàng này không?"))
+                                {
+                                    UpdateCustomerTypeSelection(existingCustomer.LoaiKH, existingCustomer.MaKH, existingCustomer.TenKH);
+                                    MessageHelper.ShowSuccess($"Đã chọn khách hàng: {existingCustomer.TenKH}");
+                                    return;
+                                }
+                                else
+                                {
+                                    MessageHelper.ShowWarning("Vui lòng sử dụng số điện thoại khác hoặc chọn khách hàng đã tồn tại!");
+                                    return;
+                                }
+                            }
+                        }
+                        
+                        var newCustomer = new KhachHang
+                        {
+                            TenKH = txtName.Text.Trim(),
+                            SDT = string.IsNullOrWhiteSpace(phone) ? null : phone,
+                            Email = string.IsNullOrWhiteSpace(txtEmail.Text) ? null : txtEmail.Text.Trim(),
+                            DiaChi = string.IsNullOrWhiteSpace(txtAddress.Text) ? null : txtAddress.Text.Trim(),
+                            LoaiKH = cmbType.SelectedItem.ToString(),
+                            DiemTichLuy = 0,
+                            NgayTao = DateTime.Now
+                        };
+                        
+                        db.KhachHang.Add(newCustomer);
+                        await db.SaveChangesAsync();
+                        
+                        UpdateCustomerTypeSelection(newCustomer.LoaiKH, newCustomer.MaKH, newCustomer.TenKH);
+                        
+                        MessageHelper.ShowSuccess($"Đã thêm khách hàng: {newCustomer.TenKH}\nLoại: {newCustomer.LoaiKH}");
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageHelper.ShowError("Lỗi khi thêm khách hàng: " + ex.Message);
+                }
             }
         }
 
@@ -279,8 +434,47 @@ namespace SupermarketApp.Forms
                 btnSave.Enabled = false;
                 btnSave.Text = "Đang lưu...";
                 
+                // Determine customer based on selection
+                string selectedLoai = selectedCustomerType;
+                int? maKHForInvoice = MaKHCurrent;
+
+                using (var db = new SupermarketContext())
+                {
+                    if (maKHForInvoice.HasValue)
+                    {
+                        var kh = await db.KhachHang.FindAsync(maKHForInvoice.Value);
+                        if (kh != null)
+                        {
+                            kh.LoaiKH = selectedLoai;
+                            await db.SaveChangesAsync();
+                        }
+                    }
+                    else
+                    {
+                        // Ensure a default customer exists for this type, then use it
+                        var tenMacDinh = selectedLoai == "Thân quen" ? "Khách Thân quen" : "Khách Vãng lai";
+                        var kh = db.KhachHang.FirstOrDefault(x => x.TenKH == tenMacDinh && x.LoaiKH == selectedLoai);
+                        if (kh == null)
+                        {
+                            kh = new KhachHang
+                            {
+                                TenKH = tenMacDinh,
+                                SDT = null,
+                                Email = null,
+                                DiaChi = null,
+                                DiemTichLuy = 0,
+                                LoaiKH = selectedLoai,
+                                NgayTao = DateTime.Now
+                            };
+                            db.KhachHang.Add(kh);
+                            await db.SaveChangesAsync();
+                        }
+                        maKHForInvoice = kh.MaKH;
+                    }
+                }
+
                 var service = new SupermarketApp.Services.InvoiceService();
-                int maHD = await service.CreateInvoiceAsync(MaNVCurrent, MaKHCurrent, cart);
+                int maHD = await service.CreateInvoiceAsync(MaNVCurrent, maKHForInvoice, cart);
                 
                 decimal change = 0;
                 if (!string.IsNullOrEmpty(txtCustomerPay.Text) && decimal.TryParse(txtCustomerPay.Text, out decimal customerPay))
@@ -329,52 +523,6 @@ namespace SupermarketApp.Forms
             }
         }
 
-        private void BtnAddCustomer_Click(object sender, EventArgs e)
-        {
-            using (var dlg = new CustomerQuickAddForm())
-            {
-                if (dlg.ShowDialog(this) == DialogResult.OK && dlg.CreatedCustomer != null)
-                {
-                    try
-                    {
-                        using (var db = new SupermarketContext())
-                        {
-                            customers = db.KhachHang
-                                .AsNoTracking()
-                                .OrderBy(x => x.TenKH)
-                                .ToList();
-                        }
-
-                        var customerDisplay2 = customers.Select(c =>
-                            string.IsNullOrWhiteSpace(c.SDT) ? $"{c.TenKH}" : $"{c.TenKH} - {c.SDT}"
-                        ).ToList();
-
-                        cbCustomer.DataSource = null;
-                        cbCustomer.Items.Clear();
-                        cbCustomer.DataSource = customerDisplay2;
-
-                        int idx = customers.FindIndex(c => c.MaKH == dlg.CreatedCustomer.MaKH);
-                        if (idx >= 0)
-                        {
-                            cbCustomer.SelectedIndex = idx;
-                            MaKHCurrent = customers[idx].MaKH;
-                        }
-                        else
-                        {
-                            cbCustomer.SelectedIndex = -1;
-                            MaKHCurrent = null;
-                        }
-
-                        MessageHelper.ShowTipSuccess("Đã thêm khách hàng mới!");
-                    }
-                    catch (Exception ex2)
-                    {
-                        MessageHelper.ShowError("Không thể tải lại danh sách khách hàng: " + ex2.Message);
-                    }
-                }
-            }
-        }
-
         private void InitializeComponent()
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -384,16 +532,18 @@ namespace SupermarketApp.Forms
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             this.pnlTop = new Sunny.UI.UIPanel();
             this.btnClear = new Sunny.UI.UIButton();
+            this.btnAddCustomer = new Sunny.UI.UIButton();
+            this.btnThanThiet = new Sunny.UI.UIButton();
+            this.btnVangLai = new Sunny.UI.UIButton();
+            this.lblCustomerType = new Sunny.UI.UILabel();
             this.btnRemove = new Sunny.UI.UIButton();
             this.btnAddToCart = new Sunny.UI.UIButton();
             this.numQty = new Sunny.UI.UIIntegerUpDown();
             this.lblQuantity = new Sunny.UI.UILabel();
             this.cbProduct = new Sunny.UI.UIComboBox();
             this.lblProduct = new Sunny.UI.UILabel();
-            this.cbCustomer = new Sunny.UI.UIComboBox();
-            this.lblCustomer = new Sunny.UI.UILabel();
             this.lblTitle = new Sunny.UI.UILabel();
-            this.btnAddCustomer = new Sunny.UI.UIButton();
+            this.lblSelectedCustomer = new Sunny.UI.UILabel();
             this.dgvCart = new Sunny.UI.UIDataGridView();
             this.pnlBottom = new Sunny.UI.UIPanel();
             this.btnSave = new Sunny.UI.UIButton();
@@ -411,16 +561,17 @@ namespace SupermarketApp.Forms
             // pnlTop
             // 
             this.pnlTop.Controls.Add(this.btnClear);
+            this.pnlTop.Controls.Add(this.btnAddCustomer);
+            this.pnlTop.Controls.Add(this.btnThanThiet);
+            this.pnlTop.Controls.Add(this.btnVangLai);
+            this.pnlTop.Controls.Add(this.lblCustomerType);
             this.pnlTop.Controls.Add(this.btnRemove);
             this.pnlTop.Controls.Add(this.btnAddToCart);
             this.pnlTop.Controls.Add(this.numQty);
             this.pnlTop.Controls.Add(this.lblQuantity);
             this.pnlTop.Controls.Add(this.cbProduct);
             this.pnlTop.Controls.Add(this.lblProduct);
-            this.pnlTop.Controls.Add(this.cbCustomer);
-            this.pnlTop.Controls.Add(this.lblCustomer);
             this.pnlTop.Controls.Add(this.lblTitle);
-            this.pnlTop.Controls.Add(this.btnAddCustomer);
             this.pnlTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlTop.FillColor = System.Drawing.Color.White;
             this.pnlTop.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
@@ -452,6 +603,65 @@ namespace SupermarketApp.Forms
             this.btnClear.TipsFont = new System.Drawing.Font("Microsoft Sans Serif", 9F);
             this.btnClear.Click += new System.EventHandler(this.BtnClear_Click);
             // 
+            // btnAddCustomer
+            // 
+            this.btnAddCustomer.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnAddCustomer.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(16)))), ((int)(((byte)(185)))), ((int)(((byte)(129)))));
+            this.btnAddCustomer.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(150)))), ((int)(((byte)(105)))));
+            this.btnAddCustomer.FillHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(150)))), ((int)(((byte)(105)))));
+            this.btnAddCustomer.FillPressColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(120)))), ((int)(((byte)(87)))));
+            this.btnAddCustomer.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold);
+            this.btnAddCustomer.Location = new System.Drawing.Point(880, 45);
+            this.btnAddCustomer.MinimumSize = new System.Drawing.Size(1, 1);
+            this.btnAddCustomer.Name = "btnAddCustomer";
+            this.btnAddCustomer.Size = new System.Drawing.Size(120, 35);
+            this.btnAddCustomer.TabIndex = 12;
+            this.btnAddCustomer.Text = "➕ Thêm KH";
+            this.btnAddCustomer.TipsFont = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            this.btnAddCustomer.Click += new System.EventHandler(this.BtnAddCustomer_Click);
+            // 
+            // btnThanThiet
+            // 
+            this.btnThanThiet.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnThanThiet.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(231)))), ((int)(((byte)(235)))));
+            this.btnThanThiet.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold);
+            this.btnThanThiet.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(85)))), ((int)(((byte)(99)))));
+            this.btnThanThiet.Location = new System.Drawing.Point(745, 45);
+            this.btnThanThiet.MinimumSize = new System.Drawing.Size(1, 1);
+            this.btnThanThiet.Name = "btnThanThiet";
+            this.btnThanThiet.RectSides = System.Windows.Forms.ToolStripStatusLabelBorderSides.None;
+            this.btnThanThiet.Size = new System.Drawing.Size(129, 35);
+            this.btnThanThiet.TabIndex = 10;
+            this.btnThanThiet.Text = "💎 Thân thiết";
+            this.btnThanThiet.TipsFont = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            this.btnThanThiet.Click += new System.EventHandler(this.BtnThanThiet_Click);
+            // 
+            // btnVangLai
+            // 
+            this.btnVangLai.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnVangLai.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(130)))), ((int)(((byte)(246)))));
+            this.btnVangLai.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold);
+            this.btnVangLai.Location = new System.Drawing.Point(624, 44);
+            this.btnVangLai.MinimumSize = new System.Drawing.Size(1, 1);
+            this.btnVangLai.Name = "btnVangLai";
+            this.btnVangLai.RectSides = System.Windows.Forms.ToolStripStatusLabelBorderSides.None;
+            this.btnVangLai.Size = new System.Drawing.Size(115, 35);
+            this.btnVangLai.TabIndex = 9;
+            this.btnVangLai.Text = "👤 Vãng lai";
+            this.btnVangLai.TipsFont = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            this.btnVangLai.Click += new System.EventHandler(this.BtnVangLai_Click);
+            // 
+            // lblCustomerType
+            // 
+            this.lblCustomerType.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold);
+            this.lblCustomerType.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
+            this.lblCustomerType.Location = new System.Drawing.Point(515, 44);
+            this.lblCustomerType.Name = "lblCustomerType";
+            this.lblCustomerType.Size = new System.Drawing.Size(103, 35);
+            this.lblCustomerType.TabIndex = 8;
+            this.lblCustomerType.Text = "Loại KH:";
+            this.lblCustomerType.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
             // btnRemove
             // 
             this.btnRemove.Cursor = System.Windows.Forms.Cursors.Hand;
@@ -460,7 +670,7 @@ namespace SupermarketApp.Forms
             this.btnRemove.FillHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(38)))), ((int)(((byte)(38)))));
             this.btnRemove.FillPressColor = System.Drawing.Color.FromArgb(((int)(((byte)(185)))), ((int)(((byte)(28)))), ((int)(((byte)(28)))));
             this.btnRemove.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.btnRemove.Location = new System.Drawing.Point(725, 85);
+            this.btnRemove.Location = new System.Drawing.Point(718, 85);
             this.btnRemove.MinimumSize = new System.Drawing.Size(1, 1);
             this.btnRemove.Name = "btnRemove";
             this.btnRemove.Size = new System.Drawing.Size(120, 35);
@@ -477,7 +687,7 @@ namespace SupermarketApp.Forms
             this.btnAddToCart.FillHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(219)))), ((int)(((byte)(39)))), ((int)(((byte)(119)))));
             this.btnAddToCart.FillPressColor = System.Drawing.Color.FromArgb(((int)(((byte)(190)))), ((int)(((byte)(24)))), ((int)(((byte)(93)))));
             this.btnAddToCart.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.btnAddToCart.Location = new System.Drawing.Point(565, 85);
+            this.btnAddToCart.Location = new System.Drawing.Point(547, 85);
             this.btnAddToCart.MinimumSize = new System.Drawing.Size(1, 1);
             this.btnAddToCart.Name = "btnAddToCart";
             this.btnAddToCart.Size = new System.Drawing.Size(154, 35);
@@ -490,7 +700,7 @@ namespace SupermarketApp.Forms
             // 
             this.numQty.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.numQty.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
-            this.numQty.Location = new System.Drawing.Point(441, 85);
+            this.numQty.Location = new System.Drawing.Point(413, 84);
             this.numQty.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.numQty.Maximum = 1000D;
             this.numQty.Minimum = 1D;
@@ -508,9 +718,9 @@ namespace SupermarketApp.Forms
             // 
             this.lblQuantity.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
             this.lblQuantity.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
-            this.lblQuantity.Location = new System.Drawing.Point(448, 55);
+            this.lblQuantity.Location = new System.Drawing.Point(409, 45);
             this.lblQuantity.Name = "lblQuantity";
-            this.lblQuantity.Size = new System.Drawing.Size(110, 25);
+            this.lblQuantity.Size = new System.Drawing.Size(100, 35);
             this.lblQuantity.TabIndex = 3;
             this.lblQuantity.Text = "Số lượng";
             this.lblQuantity.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -527,7 +737,7 @@ namespace SupermarketApp.Forms
             this.cbProduct.MinimumSize = new System.Drawing.Size(63, 0);
             this.cbProduct.Name = "cbProduct";
             this.cbProduct.Padding = new System.Windows.Forms.Padding(0, 0, 30, 2);
-            this.cbProduct.Size = new System.Drawing.Size(420, 35);
+            this.cbProduct.Size = new System.Drawing.Size(392, 35);
             this.cbProduct.SymbolSize = 24;
             this.cbProduct.TabIndex = 2;
             this.cbProduct.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
@@ -544,35 +754,6 @@ namespace SupermarketApp.Forms
             this.lblProduct.Text = "Sản phẩm";
             this.lblProduct.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // cbCustomer
-            // 
-            this.cbCustomer.DataSource = null;
-            this.cbCustomer.FillColor = System.Drawing.Color.White;
-            this.cbCustomer.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
-            this.cbCustomer.ItemHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(251)))), ((int)(((byte)(207)))), ((int)(((byte)(232)))));
-            this.cbCustomer.ItemSelectForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(236)))), ((int)(((byte)(72)))), ((int)(((byte)(153)))));
-            this.cbCustomer.Location = new System.Drawing.Point(640, 45);
-            this.cbCustomer.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.cbCustomer.MinimumSize = new System.Drawing.Size(63, 0);
-            this.cbCustomer.Name = "cbCustomer";
-            this.cbCustomer.Padding = new System.Windows.Forms.Padding(0, 0, 30, 2);
-            this.cbCustomer.Size = new System.Drawing.Size(300, 35);
-            this.cbCustomer.SymbolSize = 24;
-            this.cbCustomer.TabIndex = 2;
-            this.cbCustomer.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
-            this.cbCustomer.Watermark = "Chọn khách hàng...";
-            // 
-            // lblCustomer
-            // 
-            this.lblCustomer.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
-            this.lblCustomer.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
-            this.lblCustomer.Location = new System.Drawing.Point(636, 15);
-            this.lblCustomer.Name = "lblCustomer";
-            this.lblCustomer.Size = new System.Drawing.Size(120, 25);
-            this.lblCustomer.TabIndex = 0;
-            this.lblCustomer.Text = "Khách hàng";
-            this.lblCustomer.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
             // lblTitle
             // 
             this.lblTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold);
@@ -584,22 +765,16 @@ namespace SupermarketApp.Forms
             this.lblTitle.Text = "🛒 LẬP HÓA ĐƠN";
             this.lblTitle.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // btnAddCustomer
+            // lblSelectedCustomer
             // 
-            this.btnAddCustomer.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnAddCustomer.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(197)))), ((int)(((byte)(94)))));
-            this.btnAddCustomer.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(163)))), ((int)(((byte)(74)))));
-            this.btnAddCustomer.FillHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(163)))), ((int)(((byte)(74)))));
-            this.btnAddCustomer.FillPressColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(128)))), ((int)(((byte)(61)))));
-            this.btnAddCustomer.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
-            this.btnAddCustomer.Location = new System.Drawing.Point(945, 45);
-            this.btnAddCustomer.MinimumSize = new System.Drawing.Size(1, 1);
-            this.btnAddCustomer.Name = "btnAddCustomer";
-            this.btnAddCustomer.Size = new System.Drawing.Size(40, 35);
-            this.btnAddCustomer.TabIndex = 15;
-            this.btnAddCustomer.Text = "➕";
-            this.btnAddCustomer.TipsFont = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.btnAddCustomer.Click += new System.EventHandler(this.BtnAddCustomer_Click);
+            this.lblSelectedCustomer.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Italic);
+            this.lblSelectedCustomer.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(107)))), ((int)(((byte)(114)))), ((int)(((byte)(128)))));
+            this.lblSelectedCustomer.Location = new System.Drawing.Point(376, 146);
+            this.lblSelectedCustomer.Name = "lblSelectedCustomer";
+            this.lblSelectedCustomer.Size = new System.Drawing.Size(420, 25);
+            this.lblSelectedCustomer.TabIndex = 13;
+            this.lblSelectedCustomer.Text = "Loại: Vãng lai";
+            this.lblSelectedCustomer.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // dgvCart
             // 
@@ -745,9 +920,9 @@ namespace SupermarketApp.Forms
             // 
             this.lblTotalValue.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold);
             this.lblTotalValue.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(236)))), ((int)(((byte)(72)))), ((int)(((byte)(153)))));
-            this.lblTotalValue.Location = new System.Drawing.Point(171, 20);
+            this.lblTotalValue.Location = new System.Drawing.Point(175, 20);
             this.lblTotalValue.Name = "lblTotalValue";
-            this.lblTotalValue.Size = new System.Drawing.Size(298, 40);
+            this.lblTotalValue.Size = new System.Drawing.Size(300, 40);
             this.lblTotalValue.TabIndex = 1;
             this.lblTotalValue.Text = "0 VNĐ";
             this.lblTotalValue.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -769,6 +944,7 @@ namespace SupermarketApp.Forms
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(244)))), ((int)(((byte)(246)))));
             this.ClientSize = new System.Drawing.Size(1000, 600);
             this.Controls.Add(this.dgvCart);
+            this.Controls.Add(this.lblSelectedCustomer);
             this.Controls.Add(this.pnlBottom);
             this.Controls.Add(this.pnlTop);
             this.Name = "InvoiceForm";

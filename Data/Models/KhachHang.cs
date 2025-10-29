@@ -10,8 +10,8 @@ namespace SupermarketApp.Data.Models
         public string SDT { get; set; }
         public string Email { get; set; }
         public string DiaChi { get; set; }
-        public string LoaiKhachHang { get; set; } // Phân loại: "Khách vãng lai", "Khách thân quen", ...
         public int DiemTichLuy { get; set; }
+        public string LoaiKH { get; set; } = "Vãng lai"; // Vãng lai, Thân quen, VIP
         public DateTime NgayTao { get; set; }
 
         // Navigation Properties
